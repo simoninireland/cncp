@@ -141,5 +141,3 @@ dmypy.json
 # Build directory for Jupyter Book
 bookdir/
 
-# Dataset cache
-src/datasets
