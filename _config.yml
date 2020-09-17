@@ -1,0 +1,19 @@
+title: "Complex networks, complex processes"
+author: "Simon Dobson"
+email: simon.dobson@st-andrews.ac.uk
+copyright: "2020"
+#logo: logo.png
+
+repository:
+  url: https://github.com/simoninireland/cncp
+
+launch_buttons:
+  notebook_interface: "classic"
+  
+execute:
+  execute_notebooks: "off"
+
+html:
+  use_repository_button: true
+  google_analytics_id: UA-42241903-2
+
