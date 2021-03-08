@@ -4,7 +4,8 @@ jupyterlab
 jupyter-book >= 0.7.0b
 ghp-import
 networkx >= 2.4
-epydemic
+epyc >= 1.2.1
+epydemic >= 1.2.1
 numpy
 mpmath
 matplotlib

@@ -1,10 +1,58 @@
 - file: index
-- file: introduction
 
-- file: basic-ideas
+- part: Networks and their processes
+  chapters:
+  - file: introduction
+  - file: concepts
+  - file: concepts-networks
+  - file: concepts-geometry
+  - file: concepts-paths
+  - file: concepts-degree
+  - file: concepts-components
+  - file: concepts-processes
+  - file: concepts-stochastic
 
-- file: zbibliography
-- file: acknowledgements
-- file: about
-- file: copyright
+- part: ER and BA networks
+  chapters:
+  - file: er-networks
+  - file: er-networks-components
+  - file: er-networks-maths
+  - file: powerlaw
+
+- part: Generating networks
+  chapters:
+  - file: configuration
+  - file: generating-functions
+  - file: excess-degree
+  - file: spectral
+
+# - part: Synchronisation processes
+
+- part: Epidemic processes
+  chapters:
+  - file: epidemic-spreading
+  - file: epidemic-compartmented
+  - file: epidemic-network
+  - file: software-epydemic
+  - file: epidemic-simulation
+  - file: epidemic-synchronous
+  - file: epidemic-gillespie
+
+# - part: Higher-order structures
+
+- part: Reading and software
+  chapters:
+  - file: software-venv
+  - file: software-epyc
+  - file: software
+  - file: simulate
+  - file: parallel-ipython
+  - file: parallel-simple
+  - file: parallel-client
+  - file: parallel-async
+  
+  - file: zbibliography
+  - file: acknowledgements
+  - file: about
+  - file: copyright
 

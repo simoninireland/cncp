@@ -1,10 +1,23 @@
 # Makefile for "Complex networks, complex processes"
 #
-# Copyright (C) 2014-2020 Simon Dobson
-# 
-# Licensed under the Creative Commons Attribution-Share Alike 4.0 
-# International License (https://creativecommons.org/licenses/by-sa/4.0/).
+# Copyright (C) 2016--2020 Simon Dobson
 #
+# This file is part of cncp, a book about network science
+# cncp is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# cncp is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with cncp. If not, see <http://www.gnu.org/licenses/gpl.html>.
+
+PROJECT = cncp
+
 
 # ----- Sources -----
 
@@ -13,14 +26,51 @@ INDEX = index.md
 TEXT = \
 	preface.md \
 	introduction.md \
-	basicideas.md \
+	\
 	zbibliography.md \
 	acknowledgements.md \
 	about.md \
 	copyright.md
 
 # Notebooks
-NOTEBOOKS = 
+NOTEBOOKS = \
+	getting-started.ipynb \
+	concepts.ipynb \
+	concepts-networks.ipynb \
+	concepts-geometry.ipynb \
+	concepts-paths.ipynb \
+	concepts-degree.ipynb \
+	concepts-components.ipynb \
+	concepts-processes.ipynb \
+	concepts-stochastic.ipynb \
+	\
+	er-networks.ipynb \
+	er-networks-components.ipynb \
+	er-networks-maths.ipynb \
+	powerlaw.ipynb \
+	epidemic-spreading.ipynb \
+	epidemic-compartmented.ipynb \
+	epidemic-network.ipynb \
+	software-epydemic.ipynb \
+	epidemic-simulation.ipynb \
+	epidemic-synchronous.ipynb \
+	epidemic-gillespie.ipynb \
+	\
+	parallel.ipynb \
+	parallel-ipython.ipynb \
+	parallel-simple.ipynb \
+	parallel-client.ipynb \
+	parallel-async.ipynb \
+	\
+	configuration.ipynb \
+	generating-functions.ipynb \
+	excess-degree.ipynb \
+	spectral.ipynb \
+	\
+	software-venv.ipynb \
+	software-epyc.ipynb \
+	software.ipynb \
+	simulate.ipynb \
 
 # Image files
 RAW_IMAGES = \
@@ -56,7 +106,7 @@ CONTENT = \
 	$(INDEX) \
 	$(TEXT) \
 	$(NOTEBOOKS) \
-	$(RAW_IMAGES) $(GENERATED_IMAGES) \
+	$(RAW_IMAGES) $(SVG_IMAGES) $(GENERATED_IMAGES) \
 	$(BIBLIOGRAPHY) \
 	$(BOOK_CONFIG) $(BOOK_TOC)
 
@@ -67,7 +117,7 @@ CONTENT = \
 ROOT = $(shell pwd)
 
 # Base commands
-PYTHON = python3.6                        # specific version for talking to compute cluster
+PYTHON = python3.8                        # specific version for talking to compute cluster
 IPYTHON = ipython
 JUPYTER = jupyter
 JUPYTER_BOOK = jupyter-book
@@ -108,26 +158,9 @@ SRC_DIR = src
 BOOK_DIR = bookdir
 BOOK_BUILD_DIR = $(BOOK_DIR)/$(BUILD_DIR)
 
-
-WGET = wget
-ECHO = echo
-
-# Datestamp
-DATE = `date`
-
-# Requirements and venv
-VENV = venv3
-REQUIREMENTS = requirements.txt
-
-# Jupyter Book construction
-BUILD_DIR = _build
-SRC_DIR = src
-BOOK_DIR = bookdir
-BOOK_BUILD_DIR = $(BOOK_DIR)/$(BUILD_DIR)
-
 # LaTeX construction
 LATEX_BUILD_DIR = $(BOOK_BUILD_DIR)/latex
-LATEX_BOOK_STEM = em-book
+LATEX_BOOK_STEM = cncp-book
 LATEX_BOOK = $(LATEX_BOOK_STEM).tex
 LATEX_BOOK_PDF = $(LATEX_BOOK_STEM).pdf
 
@@ -178,7 +211,7 @@ env: $(VENV)
 
 $(VENV):
 	$(VIRTUALENV) $(VENV)
-	$(ACTIVATE) && $(PIP) install -r requirements.txt
+	$(ACTIVATE) && $(PIP) install wheel && $(PIP) install -r requirements.txt
 
 
 # Clean up the build
