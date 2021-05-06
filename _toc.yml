@@ -1,0 +1,8 @@
+format: jb-article
+root: index
+sections:
+  - file: cauchy
+
+  - file: zbibliography
+  - file: about
+  - file: copyright

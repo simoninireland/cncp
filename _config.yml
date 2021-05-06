@@ -1,0 +1,8 @@
+title: "Complex networks, complex processes: A network science miscellany"
+author: Simon Dobson
+
+execute:
+  execute_notebooks: 'off'
+
+bibtex_bibfiles:
+  - bibliography.bib
