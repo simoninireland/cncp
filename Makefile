@@ -11,14 +11,20 @@
 # Text
 INDEX = src/index.md
 TEXT = \
-	src/cauchy.md
+	src/preface.md \
+	src/zbibliography.md \
+	src/about.md \
+	src/copyright.md
 
 # Notebooks
 NOTEBOOKS =  \
+	src/cauchy.ipynb \
 	src/newman-ziff.ipynb
 
 # Image files
-RAW_IMAGES =
+RAW_IMAGES = \
+	src/sd.png \
+	src/cc-by-nc-sa.png
 
 # Generated plots
 GENERATED_IMAGES =
