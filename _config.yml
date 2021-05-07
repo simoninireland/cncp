@@ -1,5 +1,10 @@
 title: "Complex networks, complex processes: A network science miscellany"
 author: Simon Dobson
+email: simon.dobson@st-andrews.ac.uk
+copyright: "2021"
+
+repository:
+  url: https://github.com/simoninireland/cncp
 
 execute:
   execute_notebooks: 'off'
