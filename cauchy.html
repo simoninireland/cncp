@@ -1,0 +1,745 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>High-degree numerical differentiation of generating functions &#8212; Complex networks, complex processes: A network science miscellany</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="copyright" title="Copyright" href="copyright.html" />
+    <link rel="next" title="References" href="zbibliography.html" />
+    <link rel="prev" title="Complex networks, complex processes: A network science miscellany" href="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Complex networks, complex processes: A network science miscellany</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   Complex networks, complex processes: A network science miscellany
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   High-degree numerical differentiation of generating functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="zbibliography.html">
+   References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="about.html">
+   About the author
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="copyright.html">
+   Copyright
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/cauchy.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/cauchy.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#numerical-differentiation-using-scipy">
+   Numerical differentiation using
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     scipy
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#numerical-differentiation-using-cauchy-s-formula">
+   Numerical differentiation using Cauchy’s formula
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stage-1-defining-the-countour">
+     Stage 1: Defining the countour
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-2-integrating-round-the-countour">
+     Step 2: Integrating round the countour
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-3-simplifying">
+     Step 3: Simplifying
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-4-discretising-the-integral">
+     Step 4: Discretising the integral
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#coding-in-python">
+     Coding in Python
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="high-degree-numerical-differentiation-of-generating-functions">
+<h1>High-degree numerical differentiation of generating functions<a class="headerlink" href="#high-degree-numerical-differentiation-of-generating-functions" title="Permalink to this headline">¶</a></h1>
+<p>To recap, a probability generating function is a formal power series representing a discrete probability distribution, where each term of the series specifies the probability of the random variable taking a given value. The most common example is the node degree distribution generated by:</p>
+<div class="math notranslate nohighlight">
+\[
+G_0(x) = \sum_k p_k \, x^k
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(p_k\)</span> is the probability that a node chosen at random has degree <span class="math notranslate nohighlight">\(k\)</span>. The <span class="math notranslate nohighlight">\(x^k\)</span> term is simply a “binder” that associates the coefficient with the value to which it refers.</p>
+<p>There are two main ways to create such a generating function. In the first case (the <em>discrete</em> case) we know all the <span class="math notranslate nohighlight">\(p_k\)</span> and simply chain them together with their “binders”. In the second (<em>continuous</em>) case we have an expression for the series itself, for example the Poisson-distributed degree distribution of an ER network is generated by</p>
+<div class="math notranslate nohighlight">
+\[
+G_0(x) = e^{\langle k \rangle (x - 1)}
+\]</div>
+<p>One common operation to perform on this kind of distribution would be to extract the coefficient of a specific degree: what is the probability of choosing a node with degree 4, for example? This is by definition the coefficient of the term in <span class="math notranslate nohighlight">\(x^4\)</span>. In the discrete case we can simply read-off the appropriate coefficient; in the continuous case we cany differentiate <span class="math notranslate nohighlight">\(G_0(x)\)</span> four times, normalise to get rid of the multiplicative factors introduced by differentiation, and then evaluate at <span class="math notranslate nohighlight">\(0\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+p_4 = \frac{1}{4!} \bigg( \frac{d}{dx} \bigg)^4 G_0(x) \, \bigg|_{x = 0}
+\]</div>
+<p>This method of differentiation works for <em>any</em> generating function, including those that have no closed-form solution, which suggests that we need to be able to perform the operation numerically <span id="id1">[<a class="reference internal" href="zbibliography.html#id6">6</a>]</span>.</p>
+<div class="section" id="numerical-differentiation-using-scipy">
+<h2>Numerical differentiation using <code class="docutils literal notranslate"><span class="pre">scipy</span></code><a class="headerlink" href="#numerical-differentiation-using-scipy" title="Permalink to this headline">¶</a></h2>
+<p>There are lots of software solutions for numerical differentiation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1e4</span><span class="p">)</span>
+<span class="n">kmean</span> <span class="o">=</span> <span class="mi">8</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">networkx</span><span class="o">.</span><span class="n">fast_gnp_random_graph</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">kmean</span> <span class="o">/</span> <span class="n">N</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">nk_g</span><span class="p">(</span><span class="n">g</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Given a network g, return a function that returns the number of</span>
+<span class="sd">    nodes of a particular degree.</span>
+<span class="sd">    </span>
+<span class="sd">    :param g: a network</span>
+<span class="sd">    :returns: a function from degree to number of nodes&#39;&#39;&#39;</span>
+    <span class="n">degrees</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="ow">in</span> <span class="n">g</span><span class="o">.</span><span class="n">degree</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">degrees</span><span class="p">:</span>
+            <span class="n">degrees</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">degrees</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    
+    <span class="k">def</span> <span class="nf">nk</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Return the number of nodes with degree k.</span>
+<span class="sd">        </span>
+<span class="sd">        :param k: the degree</span>
+<span class="sd">        :returns: the number of nodes of this degree</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">degrees</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">degrees</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        
+    <span class="k">return</span> <span class="n">nk</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pk_g</span><span class="p">(</span><span class="n">g</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Given a network, return a function that gives the fraction of</span>
+<span class="sd">    nodes with a given degree. This is also the probability that a</span>
+<span class="sd">    node chosen from the network at random will have degree k.</span>
+<span class="sd">    </span>
+<span class="sd">    :param g: a network</span>
+<span class="sd">    :returns: a function from degree to fraction&#39;&#39;&#39;</span>
+    <span class="n">nk</span> <span class="o">=</span> <span class="n">nk_g</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">pk</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Return the fraction of nodes of degree k.</span>
+<span class="sd">        </span>
+<span class="sd">        :param k: the degree</span>
+<span class="sd">        :returns: the fraction of nodes with degree k&#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="n">nk</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">/</span> <span class="n">g</span><span class="o">.</span><span class="n">order</span><span class="p">()</span>
+    
+    <span class="k">return</span> <span class="n">pk</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For an ER network, we know that the probability of encountering a node of degree <span class="math notranslate nohighlight">\(k\)</span> is given by <span class="math notranslate nohighlight">\(p_k = \frac{1}{\langle k \rangle !} \langle k \rangle^k e^{-\langle k \rangle}\)</span>, which we can code directly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pk_ER</span><span class="p">(</span><span class="n">kmean</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Return a function that computes p_k for a given k on an ER network.</span>
+<span class="sd">    </span>
+<span class="sd">    :param kmean: the mean degree of the network</span>
+<span class="sd">    :returns: a function from degree to probability&#39;&#39;&#39;</span>
+    
+    <span class="k">def</span> <span class="nf">pk</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Return the probability of choosing a node of degree k.</span>
+<span class="sd">        </span>
+<span class="sd">        :param k: the degree</span>
+<span class="sd">        :returnsd: the probability of picking a node of degree k&#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">kmean</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">kmean</span><span class="p">))</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">pk</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>We&#39;re making use of higher-order functions to simplify the code later on. To get a function
+from degree to probability, we create a constructor function that takes all the necessary
+parameters and then hides them from later code. This means we can create a
+probability function for an explicit network, an ER network, or any other sort of network,
+and use it uniformly without having to carry the parameters that were used to create it
+into the later code. This is a useful tool for code re-use.
+</pre></div>
+</div>
+</div>
+<p>We now have two functions for extracting the degree distribution: one that extracts it empirically from a network, and one that constructs the distribution of an ER network theoretically. These two functions should coincide, which we can check.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># theoretical values</span>
+<span class="n">ks</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+<span class="n">theoretical</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">pk_ER</span><span class="p">(</span><span class="n">kmean</span><span class="p">),</span> <span class="n">ks</span><span class="p">))</span>
+
+<span class="c1"># empirical values</span>
+<span class="n">pk</span> <span class="o">=</span> <span class="n">pk_g</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="n">empirical</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">pk</span><span class="p">,</span> <span class="n">ks</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ks</span><span class="p">,</span> <span class="n">theoretical</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ks</span><span class="p">,</span> <span class="n">empirical</span><span class="p">,</span> <span class="s1">&#39;go&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$k$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$p_k$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Degree distribution ($N = </span><span class="si">{</span><span class="n">N</span><span class="si">}</span><span class="s1">, </span><span class="se">\\</span><span class="s1">langle k </span><span class="se">\\</span><span class="s1">rangle = </span><span class="si">{</span><span class="n">kmean</span><span class="si">}</span><span class="s1">$)&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/cauchy_12_0.png" src="_images/cauchy_12_0.png" />
+</div>
+</div>
+<p>So far so good. We can also encapsulate the degree distribution as a generating function as defined above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">G0_ER</span><span class="p">(</span><span class="n">kmean</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Return the degree generating function for an ER network with mean degree kmean.</span>
+<span class="sd">    </span>
+<span class="sd">    :param kmean: the mean degree</span>
+<span class="sd">    :returns: the generating function&#39;&#39;&#39;</span>
+    
+    <span class="k">def</span> <span class="nf">G0</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">cmath</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">kmean</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+    
+    <span class="k">return</span> <span class="n">G0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>(You might have noticed that we used the <code class="docutils literal notranslate"><span class="pre">cmath</span></code> package to get exponentiation that includes complex numbers. The reason for this will become clear later.) The theory says that we can extract the <span class="math notranslate nohighlight">\(p_k\)</span> values by repeated differentiation of this function. <code class="docutils literal notranslate"><span class="pre">scipy</span></code> has a function built-in that performs this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pk_scipy</span><span class="p">(</span><span class="n">gf</span><span class="p">):</span>
+    
+    <span class="c1"># we need the real part of the generating funcxtion</span>
+    <span class="k">def</span> <span class="nf">gf_real</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">gf</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">real</span>
+    
+    <span class="k">def</span> <span class="nf">pk</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">scipy</span><span class="o">.</span><span class="n">misc</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="n">gf_real</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="mi">0</span> <span class="k">if</span> <span class="n">k</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">pk</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we now plot the theoretical values against the results extracted from the generating function, they should again coincide.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># theoretical values</span>
+<span class="n">ks</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+<span class="n">theoretical</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">pk_ER</span><span class="p">(</span><span class="n">kmean</span><span class="p">),</span> <span class="n">ks</span><span class="p">))</span>
+
+<span class="c1"># extracted values</span>
+<span class="n">pk</span> <span class="o">=</span> <span class="n">pk_scipy</span><span class="p">(</span><span class="n">G0_ER</span><span class="p">(</span><span class="n">kmean</span><span class="p">))</span>
+<span class="n">extracted</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">pk</span><span class="p">,</span> <span class="n">ks</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ks</span><span class="p">,</span> <span class="n">theoretical</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ks</span><span class="p">,</span> <span class="n">extracted</span><span class="p">,</span> <span class="s1">&#39;go&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Extracted&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$k$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$p_k$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Degree distribution ($N = </span><span class="si">{</span><span class="n">N</span><span class="si">}</span><span class="s1">, </span><span class="se">\\</span><span class="s1">langle k </span><span class="se">\\</span><span class="s1">rangle = </span><span class="si">{</span><span class="n">kmean</span><span class="si">}</span><span class="s1">$)&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/cauchy_18_0.png" src="_images/cauchy_18_0.png" />
+</div>
+</div>
+<p>It was going well up to about <span class="math notranslate nohighlight">\(k=12\)</span>, but then something went seriously wrong: the extracted values don’t match. We can see this even more clearly if we try the same technique against a powerlaw-with-cutoff network.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pk_PLC</span><span class="p">(</span><span class="n">exponent</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Return a function that computes p_k for a powerlaw network</span>
+<span class="sd">    with the given exponent and cutoff.</span>
+<span class="sd">    </span>
+<span class="sd">    :param exponent: the exponent of the distribution</span>
+<span class="sd">    :param cutoff: the cutoff</span>
+<span class="sd">    :returns: a function from degree to probability&#39;&#39;&#39;</span>
+    
+    <span class="c1"># the normalising constant, which will be a real number</span>
+    <span class="c1"># despite the possibility of polylog being complex</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">mpmath</span><span class="o">.</span><span class="n">polylog</span><span class="p">(</span><span class="n">exponent</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">/</span> <span class="n">cutoff</span><span class="p">)))</span><span class="o">.</span><span class="n">real</span>
+    
+    <span class="k">def</span> <span class="nf">pk</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Return the probability of choosing a node of degree k &gt;= 1.</span>
+<span class="sd">        </span>
+<span class="sd">        :param k: the degree</span>
+<span class="sd">        :returns: the probability of picking a node of degree k&#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="n">C</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="o">-</span><span class="n">exponent</span><span class="p">)</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">k</span> <span class="o">/</span> <span class="n">cutoff</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">pk</span>
+
+<span class="k">def</span> <span class="nf">G0_PLC</span><span class="p">(</span><span class="n">exponent</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Return the generating function for a powerlaw distribution with the</span>
+<span class="sd">    given exponent and cutoff.</span>
+<span class="sd">    </span>
+<span class="sd">    :param exponent: the exponent</span>
+<span class="sd">    :param cutoff: the cutoff</span>
+<span class="sd">    :returns: the generating function&#39;&#39;&#39;</span>
+    
+    <span class="k">def</span> <span class="nf">G0</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">mpmath</span><span class="o">.</span><span class="n">polylog</span><span class="p">(</span><span class="n">exponent</span><span class="p">,</span> <span class="n">x</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">/</span> <span class="n">cutoff</span><span class="p">))</span> <span class="o">/</span> <span class="n">mpmath</span><span class="o">.</span><span class="n">polylog</span><span class="p">(</span><span class="n">exponent</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">/</span> <span class="n">cutoff</span><span class="p">))</span>
+    
+    <span class="k">return</span> <span class="n">G0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exponent</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">cutoff</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># theoretical values</span>
+<span class="n">ks</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">60</span><span class="p">))</span>
+<span class="n">theoretical</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">pk_PLC</span><span class="p">(</span><span class="n">exponent</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">),</span> <span class="n">ks</span><span class="p">))</span>
+
+<span class="c1"># extracted values</span>
+<span class="n">pk</span> <span class="o">=</span> <span class="n">pk_scipy</span><span class="p">(</span><span class="n">G0_PLC</span><span class="p">(</span><span class="n">exponent</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">))</span>
+<span class="n">extracted</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">pk</span><span class="p">,</span> <span class="n">ks</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ks</span><span class="p">,</span> <span class="n">theoretical</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ks</span><span class="p">,</span> <span class="n">extracted</span><span class="p">,</span> <span class="s1">&#39;go&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Extracted&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$k$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$p_k$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">1e-5</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Degree distribution ($</span><span class="se">\\</span><span class="s1">tau = </span><span class="si">{</span><span class="n">exponent</span><span class="si">}</span><span class="s1">, \kappa = </span><span class="si">{</span><span class="n">cutoff</span><span class="si">}</span><span class="s1">$)&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/cauchy_21_0.png" src="_images/cauchy_21_0.png" />
+</div>
+</div>
+<p>Again, we lose results at about <span class="math notranslate nohighlight">\(k = 10\)</span>.</p>
+<p>What’s happening? The problem is the numerical instability of the approach used for numerical differentiation, which starts to break down for high-order derivatives. Since we might have networks with degree significantly greater than 10, this approach to manipulating generating functions isn’t going to be practical.</p>
+</div>
+<div class="section" id="numerical-differentiation-using-cauchy-s-formula">
+<h2>Numerical differentiation using Cauchy’s formula<a class="headerlink" href="#numerical-differentiation-using-cauchy-s-formula" title="Permalink to this headline">¶</a></h2>
+<p>There is, however, another approach that involves significantly more sophisticated mathematics. This is suggested in a throwawy comment in <span id="id2">[<a class="reference internal" href="zbibliography.html#id6">6</a>]</span>, repeated in <span id="id3">[<a class="reference internal" href="zbibliography.html#id8">4</a>]</span>, about using the Cauchy formula</p>
+<div class="math notranslate nohighlight">
+\[
+f^{(n)}(z) = \frac{n!}{2 \pi i} \oint_C \frac{f(w)}{(w - z)^{n + 1}} \, dw
+\]</div>
+<p>This approach may give us the tools we need, and so may be worth understanding despite the fearsome-looking mathematics.</p>
+<p>The general approach is simple to state. To compute the <span class="math notranslate nohighlight">\(n\)</span>’th derivative of a real-valued function <span class="math notranslate nohighlight">\(f\)</span>, we make an excursion into the complex plane, choosing a closed contour <span class="math notranslate nohighlight">\(C\)</span> and computing a path integral around this path. Under certain conditions to do with the function having no poles within <span class="math notranslate nohighlight">\(C\)</span>, this approach computes high-order derivatives without succumbing to numerical instability.</p>
+<p>We need to turn the formula into something executable. We will do this in stages.</p>
+<div class="section" id="stage-1-defining-the-countour">
+<h3>Stage 1: Defining the countour<a class="headerlink" href="#stage-1-defining-the-countour" title="Permalink to this headline">¶</a></h3>
+<p>We first need the countour <span class="math notranslate nohighlight">\(C\)</span>. By “contour” we simply mean a closed loop in the complex plane that encloses the poiint at which we want to perform the differentiation. The simplest appropriate contour is therefore a circle around the point in the complex plane where we want to evaluate the derivative.</p>
+<p>We can describe a circle around the origin as a parameterised curve <span class="math notranslate nohighlight">\(w = r \, e^{i\theta}\)</span> where <span class="math notranslate nohighlight">\(r\)</span> is the radius of the circle and <span class="math notranslate nohighlight">\(0 &lt; \theta &lt; 2\pi\)</span>. The circle around a point <span class="math notranslate nohighlight">\(z\)</span> is simply this circle shifted to that point, so <span class="math notranslate nohighlight">\(w = r \, e^{i\theta} + z\)</span>.</p>
+</div>
+<div class="section" id="step-2-integrating-round-the-countour">
+<h3>Step 2: Integrating round the countour<a class="headerlink" href="#step-2-integrating-round-the-countour" title="Permalink to this headline">¶</a></h3>
+<p>We now need to integrae around this countour. We change the path integral around <span class="math notranslate nohighlight">\(C\)</span>, <span class="math notranslate nohighlight">\(\oint_C\)</span>, into an ordinary integral on the range of <span class="math notranslate nohighlight">\(\theta\)</span>, <span class="math notranslate nohighlight">\(\int_0^{2\pi}\)</span>, changing the variable of integration accordingly. Essentially this changes the arbitrary contour into a circle that we “walk around” by moving through <span class="math notranslate nohighlight">\(2 \pi\)</span> radians. To change variable we perform</p>
+<div class="math notranslate nohighlight">
+\[
+\oint_C f(w) \, dw = \int_l^h f(\theta) \frac{dw}{d\theta} d\theta 
+\]</div>
+<p>Taking <span class="math notranslate nohighlight">\(w\)</span> from above, <span class="math notranslate nohighlight">\(\frac{dw}{d\theta} = r i e^{i\theta}\)</span>, so</p>
+<div class="math notranslate nohighlight">
+\[
+\oint_C \frac{f(w)}{(w - z)^{n + 1}} \, dw
+    = \int_0^{2 \pi} \frac{f(r e^{i \theta} + z)}{(r e^{i \theta} + z - z)^{n + 1}} \, r i e^{i \theta} \, d\theta
+    = \int_0^{2 \pi} \frac{f(r e^{i \theta} + z)}{(r e^{i \theta})^n} \, i \, d\theta
+\]</div>
+<p>and so</p>
+<div class="math notranslate nohighlight">
+\[
+f^{(n)}(z) = \frac{n!}{2 \pi} \int_0^{2 \pi} \frac{f(r e^{i \theta} + z)}{(r e^{i \theta})^n} \, d\theta
+\]</div>
+<p>with the complex unit <span class="math notranslate nohighlight">\(i\)</span> within the integrand being taken out to cancel the <span class="math notranslate nohighlight">\(i\)</span> in the constant factor.</p>
+</div>
+<div class="section" id="step-3-simplifying">
+<h3>Step 3: Simplifying<a class="headerlink" href="#step-3-simplifying" title="Permalink to this headline">¶</a></h3>
+<p>We could code-up this integral directly, but we can simplify slightly more by observing that we can make <span class="math notranslate nohighlight">\(\theta = 2 \pi x\)</span> and let <span class="math notranslate nohighlight">\(0 &lt; x &lt; 1\)</span>. Changing variable of integration again, we have <span class="math notranslate nohighlight">\(\frac{d\theta}{dx} = 2 \pi\)</span> and so</p>
+<div class="math notranslate nohighlight">
+\[
+f^{(n)}(z) = \frac{n!}{2 \pi} \int_0^{2 \pi} \frac{f(r e^{i \theta} + z)}{(r e^{i \theta})^n} \, d\theta
+           = \frac{n!}{2 \pi} \int_0^1 \frac{f(r e^{2 \pi x i} + z)}{(r e^{2 \pi x i})^n} \, 2 \pi \, dx 
+           = n! \int_0^1 \frac{f(r e^{2 \pi x i} + z)}{(r e^{2 \pi x i})^n} \, dx
+\]</div>
+<p>That gets rid of the constant <span class="math notranslate nohighlight">\(\frac{1}{2 \pi}\)</span> factor.</p>
+</div>
+<div class="section" id="step-4-discretising-the-integral">
+<h3>Step 4: Discretising the integral<a class="headerlink" href="#step-4-discretising-the-integral" title="Permalink to this headline">¶</a></h3>
+<p>The expression we now have is an integral on a continuous range <span class="math notranslate nohighlight">\([0, 1]\)</span>. To evaluate this integral numrically we need to discretise it so that we compute the integrand at specific points. To do this we create the Riemann sum of the integral where we evaluate it at <span class="math notranslate nohighlight">\(m\)</span> equally-spaced points on the range, which of course correspond to <span class="math notranslate nohighlight">\(m\)</span> equally-spaced points around the circular contour in the complex plane.</p>
+<p>Let <span class="math notranslate nohighlight">\(\delta x = \frac{1}{m}\)</span> (where the numerator comes from knowing we have a unit interval) be the step size along the interval. Then</p>
+<div class="math notranslate nohighlight">
+\[
+\int_0^1 f(z) \, dz \approx \sum_{j = 1}^m f(z + j \delta x) \, \delta x
+\]</div>
+<p>where the approximation becomes exact in the limit of <span class="math notranslate nohighlight">\(m \rightarrow \infty\)</span>. We can re-arrange this expression slightly to make it simpler to evaluate, by observing that</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{j = 1}^m f(z + j \delta x) \, \delta x 
+   = \sum_{j = 1}^m f(z + j \delta x) \, \frac{1}{m} 
+   = \frac{1}{m} \sum_{j = 1}^m f(z + j \delta x)
+   = mean \bigg[ f(z + j \delta x) \bigg]
+\]</div>
+<p>So if we take a small length of the unit interval, we can simply take the average of the integrand computed at these points to get an approximation of the overall integral. The smaller the length the finer the approximation, but the more calculations we need to do.</p>
+</div>
+<div class="section" id="coding-in-python">
+<h3>Coding in Python<a class="headerlink" href="#coding-in-python" title="Permalink to this headline">¶</a></h3>
+<p>We can now code this expression directly in Python. We first construct the array of points along the unit interval. We then compute the mean of the integrand at these points to get the approximate integral, anhd multiply the result by <span class="math notranslate nohighlight">\(n!\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">differentiate</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Compute the n&#39;th derivative of f at z using</span>
+<span class="sd">    a Cauchy contour integral about a circle of radius r</span>
+<span class="sd">    in the complex plane.</span>
+
+<span class="sd">    :param f: function of one (complex) variable</span>
+<span class="sd">    :param z: point at which to find the derivative</span>
+<span class="sd">    :param n: order of derivative (defaults to 1)</span>
+<span class="sd">    :param r: radius of contour (defaults to 1.0)</span>
+<span class="sd">    :param dx: step size (defaults to 1e-2)&#39;&#39;&#39;</span>
+
+    <span class="c1"># make sure the function vectorises</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">vectorize</span><span class="p">):</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+    <span class="c1"># compute the array of points at which to compute the integrand</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">r</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">2</span><span class="n">j</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dx</span><span class="p">))</span>
+    
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">z</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="n">x</span><span class="o">**</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>(We use <code class="docutils literal notranslate"><span class="pre">numpy</span></code>’s vectorised functions to let us apply a function pointwise to an array, and <code class="docutils literal notranslate"><span class="pre">numpy</span></code>’s exponentiation function to handle complex exponentials. We also fix some defaults, such as using a unit circle of radius 1 as the contour and a step size that gives us 100 points to compute.)</p>
+<p>Now we can check whether this approach lets us extract the higher-order derivatives we need. The values of <span class="math notranslate nohighlight">\(p_k\)</span> extracted in theory for the network, and the values extracted by differentiating the generating function, should coincide.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pk_cauchy</span><span class="p">(</span><span class="n">gf</span><span class="p">):</span>
+    
+    <span class="k">def</span> <span class="nf">pk</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">complex</span><span class="p">(</span><span class="n">differentiate</span><span class="p">(</span><span class="n">gf</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span><span class="o">.</span><span class="n">real</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+        
+    <span class="k">return</span> <span class="n">pk</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exponent</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">cutoff</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># theoretical values</span>
+<span class="n">ks</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">60</span><span class="p">))</span>
+<span class="n">theoretical</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">pk_PLC</span><span class="p">(</span><span class="n">exponent</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">),</span> <span class="n">ks</span><span class="p">))</span>
+
+<span class="c1"># extracted values</span>
+<span class="n">pk</span> <span class="o">=</span> <span class="n">pk_cauchy</span><span class="p">(</span><span class="n">G0_PLC</span><span class="p">(</span><span class="n">exponent</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">))</span>
+<span class="n">extracted</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">pk</span><span class="p">,</span> <span class="n">ks</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ks</span><span class="p">,</span> <span class="n">extracted</span><span class="p">,</span> <span class="s1">&#39;go&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Extracted&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ks</span><span class="p">,</span> <span class="n">theoretical</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$k$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$p_k$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">1e-5</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Degree distribution ($</span><span class="se">\\</span><span class="s1">tau = </span><span class="si">{</span><span class="n">exponent</span><span class="si">}</span><span class="s1">, \kappa = </span><span class="si">{</span><span class="n">cutoff</span><span class="si">}</span><span class="s1">$)&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/cauchy_38_0.png" src="_images/cauchy_38_0.png" />
+</div>
+</div>
+<p><em>Much</em> better! Using the Cauchy formula to compute the derivatives allows us to go up to far higher orders than using more direct methods. The mathematics looks formidable, but can be translated step-by-step into something that can easily be coded directly. The only thing that still requires care is to ensure that the generating function is coded to work with complex numbers so that it can be evaluated around the countour in the complex plane. This can generally be accomplished transparently by using either <code class="docutils literal notranslate"><span class="pre">numpy</span></code> or <code class="docutils literal notranslate"><span class="pre">cmath</span></code> functions for exponentiation and so on.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">Complex networks, complex processes: A network science miscellany</a>
+    <a class='right-next' id="next-link" href="zbibliography.html" title="next page">References</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Simon Dobson<br/>
+        
+            &copy; <a href="copyright.html">Copyright</a> 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

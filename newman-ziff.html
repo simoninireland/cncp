@@ -1,0 +1,490 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Newman-Ziff algorithm &#8212; Complex networks, complex processes: A network science miscellany</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="copyright" title="Copyright" href="copyright.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Complex networks, complex processes: A network science miscellany</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   Complex networks, complex processes: A network science miscellany
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cauchy.html">
+   High-degree numerical differentiation of generating functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="zbibliography.html">
+   References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="about.html">
+   About the author
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="copyright.html">
+   Copyright
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/newman-ziff.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/newman-ziff.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#site-percolation">
+   Site percolation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="the-newman-ziff-algorithm">
+<h1>The Newman-Ziff algorithm<a class="headerlink" href="#the-newman-ziff-algorithm" title="Permalink to this headline">¶</a></h1>
+<p>Site (or bond) percolation involves testing every node (or edge) in a network to “occupy” is with some probability <span class="math notranslate nohighlight">\(\phi\)</span>, thereby giving rise to a largest, “giant” connected component or GCC. We are however almost certainly <em>not</em> interested in the size of the GCC for <em>one specific value</em> of <span class="math notranslate nohighlight">\(\phi\)</span>, but rather want to know how the size of the GCC changes as <span class="math notranslate nohighlight">\(\phi\)</span> changes – <em>i.e.</em>, as more nodes or edges are occupied. If we wanted to explore the behaviour of the system over, for example, 100 values of <span class="math notranslate nohighlight">\(\phi\)</span>, we would need to perform 100 percolation experiments, each of which involves touching every node and edge in the network. We need not do the computational complexioty calculation to realise that this would be prohibitively expensive, and actually it’s a lot worse than we might think.</p>
+<p>The <a class="reference external" href="#NZ00">Newman-Ziff algorithm</a> is a clever way to perform site (or bond) percolation at <em>all</em> values of <span class="math notranslate nohighlight">\(\phi\)</span> in a single sweep through the network. The important observation here is that occupying a single node (or a single edge) can connect together two existing components. This actually immediately leads to another problem, which is identifying which component a node is part of and possibly changing that component as it merges with others as the percolation process progresses. This is an example of a <strong>union-find algorithm</strong>, which can be extremely expensive in themselves: one might imagine that combining two large clusters would involve relabelling all the nodes in one of them, and again it doesn’t take much to see that this will become prohibitive if done frequently, as would be the case in the final stages of giant component formation.</p>
+<p>Newman-Ziff avoids this problem by using of trees of nodes to represent clusters. The root of a component tree “labels” it. Combining two clusters simply involves attaching the root of one tree to some element of the other, so that both trees now have the same root (and hence the same “label”). A few extra bits of cleverness allow us to represent all the component trees within a single array of size <span class="math notranslate nohighlight">\(N\)</span>, <em>and</em> to record the size of each component at the root node to make the computation of GCC size simply a matter of lookup.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">epyc</span> <span class="kn">import</span> <span class="n">ParallelLab</span><span class="p">,</span> <span class="n">Experiment</span><span class="p">,</span> <span class="n">LabNotebook</span><span class="p">,</span> <span class="n">HDF5LabNotebook</span>
+<span class="kn">from</span> <span class="nn">epydemic</span> <span class="kn">import</span> <span class="n">BondPercolation</span><span class="p">,</span> <span class="n">SitePercolation</span><span class="p">,</span> <span class="n">PLCNetwork</span>
+
+<span class="c1"># maths</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">exp</span>
+<span class="kn">from</span> <span class="nn">mpmath</span> <span class="kn">import</span> <span class="n">polylog</span>
+
+<span class="c1"># display and interaction</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;png&#39;
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.dpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">300</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn&#39;</span><span class="p">)</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s1">&#39;notebook&#39;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a persistent notebook for the results</span>
+<span class="n">nb</span> <span class="o">=</span> <span class="n">HDF5LabNotebook</span><span class="p">(</span><span class="s1">&#39;datasets/newman-ziff-percolation.h5&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Newman-Ziff percolation experiments&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will run the experiments locally, optionally using multiple cores to run several experiments simultaneously.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lab</span> <span class="o">=</span> <span class="n">ParallelLab</span><span class="p">(</span><span class="n">notebook</span><span class="o">=</span><span class="n">nb</span><span class="p">,</span> <span class="n">cores</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> <span class="c1">#only 3 cores get used, one per cutoff</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="site-percolation">
+<h2>Site percolation<a class="headerlink" href="#site-percolation" title="Permalink to this headline">¶</a></h2>
+<p>We will reproduce figure 13 of <a class="reference external" href="#NZ00">[NZ00]</a>. This computes the site percolation behaviour on a network of <span class="math notranslate nohighlight">\(10^6\)</span> nodes with a powerlaw-with-cutoff degree distribution, for three different cutoff values <span class="math notranslate nohighlight">\(\kappa\)</span>.</p>
+<p>The computation involves running the site percolation experiment over networks with different cutoff values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">nb</span><span class="o">.</span><span class="n">already</span><span class="p">(</span><span class="s1">&#39;site-percolation-plc&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Site percolation on powerlaw-with-cutoff networks for various cutoffs&quot;</span><span class="p">):</span>
+    <span class="c1"># metadata for this experiment</span>
+    <span class="n">rs</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">current</span><span class="p">()</span>
+    <span class="n">rs</span><span class="p">[</span><span class="n">PLCNetwork</span><span class="o">.</span><span class="n">N</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Network order&#39;</span>
+    <span class="n">rs</span><span class="p">[</span><span class="n">PLCNetwork</span><span class="o">.</span><span class="n">EXPONENT</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Powerlaw exponent&#39;</span>
+    <span class="n">rs</span><span class="p">[</span><span class="n">PLCNetwork</span><span class="o">.</span><span class="n">CUTOFF</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Powerlaw cutoff&#39;</span>
+    <span class="n">rs</span><span class="p">[</span><span class="n">SitePercolation</span><span class="o">.</span><span class="n">P</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Occupation probability&#39;</span>
+    <span class="n">rs</span><span class="p">[</span><span class="n">SitePercolation</span><span class="o">.</span><span class="n">GCC</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Size of giant connected component (GCC)&#39;</span>
+
+    <span class="c1"># set up the network parameter space</span>
+    <span class="n">lab</span><span class="p">[</span><span class="n">PLCNetwork</span><span class="o">.</span><span class="n">N</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span>
+    <span class="n">lab</span><span class="p">[</span><span class="n">PLCNetwork</span><span class="o">.</span><span class="n">EXPONENT</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.5</span>
+    <span class="n">lab</span><span class="p">[</span><span class="n">PLCNetwork</span><span class="o">.</span><span class="n">CUTOFF</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+
+    <span class="c1"># run the experiment over the parameter space</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="n">SitePercolation</span><span class="p">(</span><span class="n">PLCNetwork</span><span class="p">())</span>
+    <span class="n">lab</span><span class="o">.</span><span class="n">runExperiment</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The time-consuming part of this experiment is creating the million-node networks to experiment on: as shown below, the actual experimental time is short.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;site-percolation-plc&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dataframe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We need to compare these results with the known theoretical predictions for percolation. Calloway <em>et alia</em> <a class="reference external" href="#CNSW00">[CNSW00]</a> derived the necessary equations for the size <span class="math notranslate nohighlight">\(S\)</span> of the giant component at a specific value of <span class="math notranslate nohighlight">\(\phi\)</span> in terms of the degree distribution <span class="math notranslate nohighlight">\(p_k\)</span> and a value <span class="math notranslate nohighlight">\(u\)</span> which is defined in terms of a self-consistency equation:</p>
+<div class="math notranslate nohighlight">
+\[
+    S = q - q \sum_{k=0}^{\infty} p_k u^k \qquad \qquad u = 1 - q - q \frac{\sum_{k=0}^{\infty} k p_k u^{k - 1}}{\sum_{k=0}^{\infty}k p_k}
+\]</div>
+<p>We first need the degree distribution <span class="math notranslate nohighlight">\(p_k\)</span>. which for a powerlaw-with-cutoff network is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+    p_k = \frac{1}{C} k^{-\alpha} e^{-k / \kappa}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(C = Li_\alpha(e^{-1 / \kappa})\)</span> is a constant of proportionality derived from the polylogarithm function. We can code this distribution very simply.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_PLC</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">kappa</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Create a powerlaw-with-cutoff probability distribution for the given parameters.</span>
+<span class="sd">    </span>
+<span class="sd">    :param alpha: the exponent</span>
+<span class="sd">    :param kappa: the cutoff&#39;&#39;&#39;</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">polylog</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">kappa</span><span class="p">))</span>
+    <span class="k">def</span> <span class="nf">p</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="o">-</span><span class="n">alpha</span><span class="p">)</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">k</span> <span class="o">/</span> <span class="n">kappa</span><span class="p">))</span> <span class="o">/</span> <span class="n">C</span>
+    <span class="k">return</span> <span class="n">p</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Given this we can then code <span class="math notranslate nohighlight">\(S\)</span> and <span class="math notranslate nohighlight">\(u\)</span>. Note that the definition of <span class="math notranslate nohighlight">\(u\)</span> also takes a value of <span class="math notranslate nohighlight">\(u\)</span> as an argument, giving rise to a self-consistency condition.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">S</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">maxk</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">maxk</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="n">p</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="nb">pow</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">phi</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">s</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">u</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">maxk</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">maxk</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="n">k</span> <span class="o">*</span> <span class="n">p</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="nb">pow</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">t</span> <span class="o">+=</span> <span class="n">k</span> <span class="o">*</span> <span class="n">p</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">phi</span> <span class="o">+</span> <span class="n">phi</span> <span class="o">*</span> <span class="n">s</span> <span class="o">/</span> <span class="n">t</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can then compute the theoretical size of the GCC by first computing <span class="math notranslate nohighlight">\(u\)</span> using fixed-point iteration and using this to find <span class="math notranslate nohighlight">\(S\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fpi</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">maxreps</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Perform naive fixed-point iteration on the given function.</span>
+<span class="sd">    </span>
+<span class="sd">    :param f: the function (of one variable)</span>
+<span class="sd">    :param x: (optional) the starting point (defaults to 0.0)</span>
+<span class="sd">    :param delta: (optional) the stopping distance (defauls to 1e-6)</span>
+<span class="sd">    :param maxreps: (optional) maximum number of steps (defaults to 50)</span>
+<span class="sd">    :returns: the converged value of x&#39;&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">maxreps</span><span class="p">):</span>
+        <span class="n">xprime</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">xprime</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">delta</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">xprime</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">xprime</span>
+    <span class="k">return</span> <span class="n">x</span>
+
+<span class="k">def</span> <span class="nf">gcc_theoretical</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">phi</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Compute the theoretical size of the giant connected comoponent.</span>
+<span class="sd">    </span>
+<span class="sd">    :param p: the degree distribution</span>
+<span class="sd">    :param phi: the occupation probability</span>
+<span class="sd">    :returns: the predicted size of the GCC as a fraction of the network size&#39;&#39;&#39;</span>
+    <span class="n">u_fix</span> <span class="o">=</span> <span class="n">fpi</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">u</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">phi</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">S</span><span class="p">(</span><span class="n">u_fix</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">phi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>From this we can plot the theoertical curves for GCC size against the experimental results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kappas</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">PLCNetwork</span><span class="o">.</span><span class="n">CUTOFF</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">kappa_colours</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">]</span>
+<span class="n">kappa_markers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;^&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">]</span>
+
+<span class="n">gccs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">kappas</span><span class="p">)):</span>
+    <span class="n">kappa</span> <span class="o">=</span> <span class="n">kappas</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">kdf</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="n">PLCNetwork</span><span class="o">.</span><span class="n">CUTOFF</span><span class="p">]</span> <span class="o">==</span> <span class="n">kappa</span><span class="p">]</span>
+    
+    <span class="c1"># theory</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">make_PLC</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">kappa</span><span class="p">)</span>
+    <span class="n">gccs</span><span class="p">[</span><span class="n">kappa</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">phi</span><span class="p">:</span> <span class="n">gcc_theoretical</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">phi</span><span class="p">)</span> <span class="k">if</span> <span class="n">phi</span> <span class="o">&gt;</span> <span class="mf">0.0</span> <span class="k">else</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">kdf</span><span class="p">[</span><span class="n">SitePercolation</span><span class="o">.</span><span class="n">P</span><span class="p">]))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kdf</span><span class="p">[</span><span class="n">SitePercolation</span><span class="o">.</span><span class="n">P</span><span class="p">],</span> <span class="n">gccs</span><span class="p">[</span><span class="n">kappa</span><span class="p">],</span> <span class="s1">&#39;</span><span class="si">{c}</span><span class="s1">-&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="o">=</span><span class="n">kappa_colours</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    
+    <span class="c1"># experiment</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">kdf</span><span class="p">[</span><span class="n">SitePercolation</span><span class="o">.</span><span class="n">P</span><span class="p">],</span> <span class="n">kdf</span><span class="p">[</span><span class="n">SitePercolation</span><span class="o">.</span><span class="n">GCC</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1e6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="n">kappa_colours</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="n">kappa_markers</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\kappa = </span><span class="si">{k}</span><span class="s1">$&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="n">kappa</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;fraction of occupied sites $\phi$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;size of giant component $S$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Site percolation on PLC network for different cutoffs $\kappa$ ($N = 10^6, </span><span class="se">\\</span><span class="s1">alpha = 2.5$)&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;site-percolation-plc.png&#39;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/newman-ziff_18_0.png" src="_images/newman-ziff_18_0.png" />
+</div>
+</div>
+<p>How long does the process take?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">kappa</span> <span class="ow">in</span> <span class="n">kappas</span><span class="p">:</span>
+    <span class="n">kdf</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="n">PLCNetwork</span><span class="o">.</span><span class="n">CUTOFF</span><span class="p">]</span> <span class="o">==</span> <span class="n">kappa</span><span class="p">]</span>
+    <span class="n">gen</span> <span class="o">=</span> <span class="n">kdf</span><span class="p">[</span><span class="n">Experiment</span><span class="o">.</span><span class="n">SETUP_TIME</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">per</span> <span class="o">=</span> <span class="n">kdf</span><span class="p">[</span><span class="n">Experiment</span><span class="o">.</span><span class="n">EXPERIMENT_TIME</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;kappa = </span><span class="si">{k}</span><span class="s1">, network creation </span><span class="si">{c}</span><span class="s1">s, percolation process </span><span class="si">{p}</span><span class="s1">s&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="n">kappa</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">gen</span><span class="p">),</span> <span class="n">p</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">per</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>kappa = 20, network creation 1855s, percolation process 6s
+kappa = 50, network creation 1872s, percolation process 7s
+kappa = 100, network creation 1886s, percolation process 8s
+</pre></div>
+</div>
+</div>
+</div>
+<p>Newman and Ziff comment that generating the above plot took “about an hour in total”. For comparison – 20 years later, and coded in Python rather than C – the three processes in the above figure take under half a minute to compute – <em>if</em> we ignore network-creation time, which takes half an hour for each cutoff. (It actually takes longer to numerically approximate the curves of the theoretical model than it does to run the experiment.)</p>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p><a id='CNSW00'>[CNSW00]</a> Duncan Callaway, M.E.J. Newman, Steven Strogatz, and Duncan Watts. <a class="reference external" href="https://doi.org/10.1103/PhysRevLett.85.5468">Network robustness and fragility: Percolation on random graphs</a>. Physical Review Letters <strong>85</strong>. 2000.</p>
+<p><a id='NZ00'>[NZ00]</a> M.E.J. Newman and R.M. Ziff. <a class="reference external" href="https://doi.org/10.1103/PhysRevLett.85.4104%3E">Efficient Monte Carlo algorithm and high-precision results for percolation</a>. Physical Review Letters <strong>85</strong>. November 2000.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Simon Dobson<br/>
+        
+            &copy; <a href="copyright.html">Copyright</a> 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
