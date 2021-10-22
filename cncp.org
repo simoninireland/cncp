@@ -1,0 +1,45 @@
+#+title: cncp
+
+* Complex networks, complex processes: A network science miscellany :PROJECT:
+
+** Contents to write
+
+*** Generating functions
+
+*** Monte Carlo simulation
+
+**** Synchronous
+
+**** Gillespie
+
+
+*** Disease models
+
+**** Compartmented models
+
+**** SIR, SIS, SEIR
+
+     Focus on the differences, what they allow in terms of modelling
+     and relationships to real diseases.
+
+*** Opinion dynamics
+
+*** Adaptive networks
+
+    How does adaptation change things?
+
+**** Addition-deletion networks
+
+     The simplest kind. Maybe look at different kernels as well as the
+     "standard" ones.
+
+     See [[id:7c993ad2-f1ac-4e11-9e9a-439e1f6ceb2d][Exact solutions for models of evolving networks with addition
+     and deletion of nodes]].
+
+
+**** Epidemic dynamics on networks
+
+     SIS epidemics show endemicity and changing epidemic thresholds as
+     the degree of rewiring changes.
+
+     See [[id:4a382371-d0e5-4469-aff2-92c7b14c5d60][Epidemic dynamics on an adaptive network]].
