@@ -1,8 +1,16 @@
 format: jb-article
 root: index
 sections:
+  # Generating functions
   - file: cauchy
+  - file: generating-cdfs
 
+  # Epidemic spreading
+  - file: simulation
+  - file: synchronous
+  - file: gillespie
+
+  #Back matter
   - file: zbibliography
   - file: about
   - file: copyright

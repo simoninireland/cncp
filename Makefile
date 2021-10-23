@@ -18,7 +18,11 @@ TEXT = \
 
 # Notebooks
 NOTEBOOKS =  \
+	src/simulation.ipynb \
+	src/synchronous.ipynb \
+	src/gillespie.ipynb \
 	src/cauchy.ipynb \
+	src/generating-cdfs.ipynb \
 	src/newman-ziff.ipynb
 
 # Image files
