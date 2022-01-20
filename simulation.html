@@ -1,0 +1,465 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Epidemic simulation &#8212; Complex networks, complex processes: A network science miscellany</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="copyright" title="Copyright" href="copyright.html" />
+    <link rel="next" title="Synchronous simulation" href="synchronous.html" />
+    <link rel="prev" title="Generating cumulative generating functions" href="generating-cdfs.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Complex networks, complex processes: A network science miscellany</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   Complex networks, complex processes: A network science miscellany
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cauchy.html">
+   High-degree numerical differentiation of generating functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="generating-cdfs.html">
+   Generating cumulative generating functions
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Epidemic simulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="synchronous.html">
+   <span id="chap_epidemic_synchronous">
+   </span>
+   Synchronous simulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gillespie.html">
+   Gillespie simulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="zbibliography.html">
+   References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="about.html">
+   About the author
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="copyright.html">
+   Copyright
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/simulation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/simoninireland/cncp/master?urlpath=tree/simulation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#some-notes-about-simulation">
+   Some notes about simulation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-quality">
+     Model quality
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discrete-event-simulation">
+     Discrete-event simulation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simulation-time">
+     Simulation time
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stochasticity-or-random-factors">
+     Stochasticity, or random factors
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-process-and-coding-of-simulation">
+   The process and coding of simulation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-structure-of-epydemic-simulations">
+     The structure of
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       epydemic
+      </span>
+     </code>
+     simulations
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Epidemic simulation</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#some-notes-about-simulation">
+   Some notes about simulation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-quality">
+     Model quality
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discrete-event-simulation">
+     Discrete-event simulation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simulation-time">
+     Simulation time
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stochasticity-or-random-factors">
+     Stochasticity, or random factors
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-process-and-coding-of-simulation">
+   The process and coding of simulation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-structure-of-epydemic-simulations">
+     The structure of
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       epydemic
+      </span>
+     </code>
+     simulations
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="epidemic-simulation">
+<h1>Epidemic simulation<a class="headerlink" href="#epidemic-simulation" title="Permalink to this headline">¶</a></h1>
+<p>Now we have a model, we need a simulator on which to run it. In this chapter we’ll introduce the ideas behind simulating processes over networks, in particular the idea of discrete-event simulation. We’ll then – finally! – be ready to look at the main ways in which network science simulations are coded, and to run an epidemic model over a network.</p>
+<div class="section" id="some-notes-about-simulation">
+<h2>Some notes about simulation<a class="headerlink" href="#some-notes-about-simulation" title="Permalink to this headline">¶</a></h2>
+<p>Simulation is an enormous topic in computer science, with a long and distiinguished history. It’s easy to see why it’s so important: whenever we use computers to study natural processes (or indeed man-made or engineering processes) we’re taking a <em>physical</em> system, <em>abstracting</em> it into a computer model, and then building software that runs the model <em>as if</em> it were the real system running in the real world – and then draw conclusions about how the real system will behave when subjected to the analagous real-world situation.</p>
+<p>The process of model abstraction – of which compartmented models of disease are a prime example – is a process of simplification, of leaving out details in order to get to the essentials of the process we’re interested in. This reduction of detail is sometimes criticised by those outside the scientific community: if you leave out the details, how do you know that your model is really saying anything about the real-world phenomenon? And that’s a fair point. But simplification is essential if we’re to understand the core behaviour of processes and not be distracted by all the details.</p>
+<div class="section" id="model-quality">
+<h3>Model quality<a class="headerlink" href="#model-quality" title="Permalink to this headline">¶</a></h3>
+<p>How do we know is a model says anything meaningful? We need to <strong>verify</strong> and <strong>validate</strong> it – two software engineering concepts that are sometimes summarised as “did we build it right?” and, “did we build the right thing?”.</p>
+<p>By <strong>verification</strong> we mean examining the model to ensure that, to the best of our ability, the mathematics and code are faithful to the way we think the process operates. This examination might take any number of forms, from inspection of the code and maths by others, through the development of test suites to exercise the code and check it against known situations, to the use of the mathematically-based techniques of computer science formal methods. It’s easy to get code wrong, and incorrect code tells us less than nothing about the phenomena we’re interested in: never skimp on debugging, and never assume things are finally working completely correctly.</p>
+<p>By <strong>validation</strong> we mean deciding whether the model does actually reflect the real world. This might take the form of creating a simple real-world experiment and performing it physically as well as in simulation, to see if the results match. Of course they never will match exactly, because in the process of simplification we’ll have removed some of the details that affect the physical process. In simulation, a pendulum on a friction-free mount will swing forever; in reality, it never will, because the mount will never actually <em>be</em> friction-free.</p>
+</div>
+<div class="section" id="discrete-event-simulation">
+<h3>Discrete-event simulation<a class="headerlink" href="#discrete-event-simulation" title="Permalink to this headline">¶</a></h3>
+<p>Since simulation has so much history, it’s unsurprising that there are a myriad of approaches to conducting them. Each choice has subtly different implications on the experiments and results obtained – often only really understood by those who’ve spent a lifetime with the given techniques.</p>
+<p>In network science the simulations we typically use fall under the broad rubric of <strong>discrete-event simulation</strong>. What this means is that, to a simulator, the world is treated as a sequence of individually-identifiable events that happen in a sequence through time. In the case of disease models, the events are individual nodes being infected or recovering: individual, discrete “happenings” described individually and executed independently. Of course one event affects subsequent ones – you can’t recover if you’ve never been infected in the first place – but that’s about the <em>possible sequences</em> of events that can occur, not a relationship between one event and enother at the coding level.</p>
+<p>You can see the sequencing of events at work in the compartmented model. An infection event happens at SI edges and has a local effect: change the susceptible node’s compartment, which in turn might generate more SI edges at which further infection events can occur. A recovery event happens at infected nodes, meaning it can <em>only</em> happen <em>if</em> an infection event previously happened there (or of the node was initially infected). The sequencing is implicit in the definition of the event loci, and of the events’ effects – even though there’s no explicit encoding within the events themselves of how they’ll be sequenced.</p>
+</div>
+<div class="section" id="simulation-time">
+<h3>Simulation time<a class="headerlink" href="#simulation-time" title="Permalink to this headline">¶</a></h3>
+<p>A simulation occurs in <strong>simulated time</strong>, which is to say the time in the simulated world. This is typically different to real-world or <strong>wallclock time</strong>, which is how long the simulation takes to run on a computer. These two notions of time differ substantially. It’s easy to see why: most biological and physical processes take an eternity from the perspective of a modern computer. The progression of a disease in an individual might take days, and we seldom want to wait that long for results. Simulation time often therefore passes more quickly than wallclock time.</p>
+<p>We might need some way to relate simulation time to “real world” time, for example to see how many days an epidemic will last. In that case we’ll need to develop ways to translate between simulated time and the “real” time of the phenomenon being studied. But often we don’t care about this level of realism, and are happy to work in a more abstract world.</p>
+<p>There’s still another thing to consider, which is the issue of temporal resolution. Time, at least at the macro scale, is a continuous quantity, represented as a real number. A <strong>continuous time</strong> simulation represents time in this way, and also typically assuems that only one event happens at each (simulated) moment. This may sound restrictive, but the idea is that the events that happen happen instantaneously, so two events never need happen at <em>exactly</em> the same time: we can always put some infinmitesimal gap between them. In SIR, this means people go from being susceptible to being infected instantaneously; if two people are infected, one of them is always infected before the other.</p>
+<p>Another way to view time is to think of it as divided up into discrete chunks: seconds, for example. Instead of modelling a continuous stream of events, each occurring at a different instant, we think about blocks of time in which a set of events occur. This is a <strong>discrete time</strong> simulation.</p>
+<p>Which of these approaches is “right”? Neither – and that’s anyway the wrong question. They are both approximations of reality that we use to perform computational experiments. There are sometimes reasons to prefer one over the other, but often the choice is a matter of intellectual preference or coding convenience. At the risk of massive stereotyping, people with computer science backgrounds are often (at least initially) more comfortable with a discrete-time view, while people with a classical science background often find it easier to think about continuous time. (One reason for this may be that the mathematics taught in computer science programmes is typically overwhelmingly discrete and tends not to emphasise modelling with differential equations, which is where the continuous ideas come from.) There are good mathematical reasons to prefer continuous-time over discrete-time simulation, but both are available to you.</p>
+</div>
+<div class="section" id="stochasticity-or-random-factors">
+<h3>Stochasticity, or random factors<a class="headerlink" href="#stochasticity-or-random-factors" title="Permalink to this headline">¶</a></h3>
+<p>When working with random networks and stochastic processes there are additional complications due to the use of randomness. It is entirely possible that, just by a chance interaction, a disease on a network will die out. Run the <em>same</em> experiment on the <em>same</em> network with the <em>same</em> parameters – and you might get a disease that <em>doesn’t</em> die out, because the chance interaction didn’t happen this time.</p>
+<p>Does this mean that such experiments aren’t repeatable? No! – but it <em>does</em> mean that we need to be careful, perform repetitions, be sure that we understand the implications of the various random factors that affect the outcome of each experiment. We’ll have a lot more to say on this topic later.</p>
+<p>What this discussion is getting at is that we need to be careful in going from the models we develop, their realisation in code, and their execution in simulation, to conclusions about the real world. We need to be sure that the conclusions we draw are supported by the simulations we’ve done, and that they match, to an appropriate degree, observations we can make about the real-world process we’re simulating.</p>
+</div>
+</div>
+<div class="section" id="the-process-and-coding-of-simulation">
+<span id="sec-simulation-coding"></span><h2>The process and coding of simulation<a class="headerlink" href="#the-process-and-coding-of-simulation" title="Permalink to this headline">¶</a></h2>
+<p>Let’s look in overview at the process of discrete-event simulation, before we get into the coding details.</p>
+<p>The basic process of simulation involves repeatedly deciding three things:</p>
+<ol class="simple">
+<li><p><em>when</em> (in simulation time) does the next event occur?,</p></li>
+<li><p><em>where</em> in the network does it occur?, and</p></li>
+<li><p><em>which</em> event is it that occurs?</p></li>
+</ol>
+<p>The event is then executed, and the process repeats – forever in principle, and in practice until some <strong>termination condition</strong> occurs. In network science we often use a termination condition of <strong>equilibrium</strong>, where the network has in some sense “stabilised” so we can look at its overall state. In SIR this might be when there are no infected nodes left in the network, since no further events are then possible.</p>
+<p>How are these three decisions made? The details are what differentiates between the different methods of simulation. For our purposes, <code class="docutils literal notranslate"><span class="pre">epydemic</span></code> provides a framework for simulating epidemics on networks, with the decision-making either being coded directly or – more conveniently – being offloaded to a software encoding of a compartmented model. It’s this framework we’ll turn to next.</p>
+<div class="section" id="the-structure-of-epydemic-simulations">
+<h3>The structure of <code class="docutils literal notranslate"><span class="pre">epydemic</span></code> simulations<a class="headerlink" href="#the-structure-of-epydemic-simulations" title="Permalink to this headline">¶</a></h3>
+<p>What is the appropriate software structure for a simulator? There probably is no right answer to this, but <code class="docutils literal notranslate"><span class="pre">epydemic</span></code> views simulations as being composed of two distinct parts:</p>
+<ol class="simple">
+<li><p><strong>Processes</strong> that define how the process being simulated behaves in time; and</p></li>
+<li><p><strong>Dynamics</strong> that define how the model is used to produce and execute the stream of events making up the simulated process.</p></li>
+</ol>
+<p>A process defines methods for setting-up, running, and tearing-down the process for each experiment we run; for defining the rates at which different events occur; for the code that runs at each event; for collecting the results of the experiment; and for accessing and changing the network over which the process runs. There are all sorts of processes we can define, including the compartmented model process that executes compartmented disease models. (We’ll come onto these later.)</p>
+<p>A dynamics by contrast determines which event runs next. This is the main division of labour between processes and models: a model defines <em>what events do</em>, while the dynamics defines <em>what events run</em> and in what order. The bridge between these two responsibilities is provided by the statistical functions on the process API that return the rates at which events should occur. The dynamics knows nothing about how these rates are computed: they will typically change as a result of events being fired; similarly, it knows nothing about what the events do.</p>
+<p>There are two basic kinds of dynamics. <strong>Synchronous</strong> dynamics works in discrete time, and at each timestep decides whether each possible event occurs or not. <strong>Stochastic</strong> or <strong>Gillespie</strong> dynamics works in continuous time and is bboth more efficient and more statistically exact, at a cost of being perhaps less intuitive. Let’s look at the synchronous case first, even though it’s less commonly used in practice, and then tackle the stochastic case.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="generating-cdfs.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Generating cumulative generating functions</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="synchronous.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span id="chap_epidemic_synchronous"></span> Synchronous simulation</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Simon Dobson<br/>
+    
+        &copy; <a href="copyright.html">Copyright</a> 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

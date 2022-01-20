@@ -1,0 +1,898 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gillespie simulation &#8212; Complex networks, complex processes: A network science miscellany</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="copyright" title="Copyright" href="copyright.html" />
+    <link rel="next" title="References" href="zbibliography.html" />
+    <link rel="prev" title="Synchronous simulation" href="synchronous.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Complex networks, complex processes: A network science miscellany</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   Complex networks, complex processes: A network science miscellany
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cauchy.html">
+   High-degree numerical differentiation of generating functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="generating-cdfs.html">
+   Generating cumulative generating functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="simulation.html">
+   Epidemic simulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="synchronous.html">
+   <span id="chap_epidemic_synchronous">
+   </span>
+   Synchronous simulation
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Gillespie simulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="zbibliography.html">
+   References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="about.html">
+   About the author
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="copyright.html">
+   Copyright
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/gillespie.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/simoninireland/cncp/master?urlpath=tree/gillespie.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#from-single-step-to-interval-behaviour">
+   From single-step to interval behaviour
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-joint-event-probability-distribution">
+     The joint event probability distribution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-distribution-of-events-in-time">
+     The distribution of events in time
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#drawing-from-the-distribution">
+     Drawing from the distribution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-id-sec-epidemic-gillespie-drawing-pair-span-generating-the-tau-e-pair">
+     <span id="sec_epidemic_gillespie_drawing_pair">
+     </span>
+     Generating the
+     <span class="math notranslate nohighlight">
+      \((\tau, e)\)
+     </span>
+     pair
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stochastic-dynamics">
+   Stochastic dynamics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-id-sec-epidemic-stochastic-example-span-simulating-sir-again">
+   <span id="sec_epidemic_stochastic_example">
+   </span>
+   Simulating SIR (again)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comparison">
+   Comparison
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#performance">
+     Performance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#equivalence">
+     Equivalence
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Gillespie simulation</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#from-single-step-to-interval-behaviour">
+   From single-step to interval behaviour
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-joint-event-probability-distribution">
+     The joint event probability distribution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-distribution-of-events-in-time">
+     The distribution of events in time
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#drawing-from-the-distribution">
+     Drawing from the distribution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-id-sec-epidemic-gillespie-drawing-pair-span-generating-the-tau-e-pair">
+     <span id="sec_epidemic_gillespie_drawing_pair">
+     </span>
+     Generating the
+     <span class="math notranslate nohighlight">
+      \((\tau, e)\)
+     </span>
+     pair
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stochastic-dynamics">
+   Stochastic dynamics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-id-sec-epidemic-stochastic-example-span-simulating-sir-again">
+   <span id="sec_epidemic_stochastic_example">
+   </span>
+   Simulating SIR (again)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comparison">
+   Comparison
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#performance">
+     Performance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#equivalence">
+     Equivalence
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="gillespie-simulation">
+<h1>Gillespie simulation<a class="headerlink" href="#gillespie-simulation" title="Permalink to this headline">¶</a></h1>
+<p>We can improve both the performance and statistical properties of simulations by changing the simulation approach we use. We <em>won’t</em> try to optimise or improve the performance of synchronous dynamics, although there’s certainly scope to do so: instead, we’ll <em>replace</em> the synchronous approach with another technique that (it turns out) is better-suited to the accurate simulating large systems.</p>
+<p>The technique we use is sometimes called <em>Gillespie’s stochastic siumulation algorithm</em> or simply <em>Gillespie simulation</em>, It was developed initially <span id="id1">[<a class="reference internal" href="zbibliography.html#id7">5</a>, <a class="reference internal" href="zbibliography.html#id8">6</a>]</span> to perform <em>ab initio</em> chemical simulations, where a lot of molecules react according to a set of simple chemical rules – a situation that’s very similar to a process over a network. Cao <em>et alia</em> <span id="id2">[<a class="reference internal" href="zbibliography.html#id9">3</a>]</span> provide a very accessible description to the basic mathematics of the technique, which we’ll develop in a network context below.</p>
+<p>The essence of Gillespie simulation is the observation that we can manipulate the probabilities governing events. Instead of testing in every discrete timestep which of the available events can occur (for example from susceptible to infected in SIR), we predict the instant of time at which the next event will occur – skipping the intermediate time when nothing happens. To put this another way, we convert the probabilities of individual events in <em>space</em> into aggregate probability distributions of events over <em>time</em>. If the simulation is such that a lot of “empty” timesteps occur, then this approach will avoid the costs of simulating them. It has the additional advantage of operating in continuous time with only a single event happening at each instant, which solves the problem of events affecting each other within a timestep.</p>
+<p>Unfortunately these benefits come at the cost of some fairly subtle mathematics needed to manipulate the probability distributions into the required form. We’ll deal with this first, and then encode the result as a new simulation dynamics that we can use to simulate epidemics using the <em>same</em> compartmented process models as we used for the synchronous case.</p>
+<div class="section" id="from-single-step-to-interval-behaviour">
+<h2>From single-step to interval behaviour<a class="headerlink" href="#from-single-step-to-interval-behaviour" title="Permalink to this headline">¶</a></h2>
+<p>In the synchronous simulation we took all the places at which an event could occur and probabilistically chose some of them for firing. Infection happens along SI edges. (We can also identify SS, SR, II, and RR edges, and these play important rôles in some epidemic models, although not in SIR.) SIR assumes that the dynamics occurs at these loci independently. If we denote the probability of an SI edge transmitting an infection as <span class="math notranslate nohighlight">\(\beta\)</span> as usual, then the rate at which edges in the network transmit infection is given by <span class="math notranslate nohighlight">\(\beta [SI]\)</span> where <span class="math notranslate nohighlight">\([SI]\)</span> denotes the number of SI edges in the network (the size of the locus, in other words). <span class="math notranslate nohighlight">\([SI]\)</span> is of course a function of time, since the population of SI edges is changed by the infection event. Similarly if infected nodes are removed with probability <span class="math notranslate nohighlight">\(\alpha\)</span> the rate of recovery is given by <span class="math notranslate nohighlight">\(\alpha [I]\)</span>. In a sense the values of <span class="math notranslate nohighlight">\([SI]\)</span> and <span class="math notranslate nohighlight">\([I]\)</span> constitute the “state” of the dynamical system. Each infection event will decrease <span class="math notranslate nohighlight">\([SI]\)</span> by one and increase <span class="math notranslate nohighlight">\([I]\)</span> by a value that depends on the degree of the newly-infected node and how many of those adjacent nodes are susceptible. This indicates that the dynamics entwines three distinct features:</p>
+<ol class="simple">
+<li><p>the probabilities of different events;</p></li>
+<li><p>the number of places at which these events can occur; and</p></li>
+<li><p>the topology of the network that controls how the populations of different loci evolve.</p></li>
+</ol>
+<p>It is this third feature that distinguishes the network formulation from the differential equation formulation, since it allows heterogeneity of evolution in both space and time.</p>
+<div class="section" id="the-joint-event-probability-distribution">
+<h3>The joint event probability distribution<a class="headerlink" href="#the-joint-event-probability-distribution" title="Permalink to this headline">¶</a></h3>
+<p>Let us re-formulate the above in a way that’s more explcitly continuous in nature. The probability that some SI edge will transmit infection in a small time <span class="math notranslate nohighlight">\(dt\)</span> is given by <span class="math notranslate nohighlight">\(a_I \, dt = \alpha [SI] \, dt\)</span>, and recovery similarly by <span class="math notranslate nohighlight">\(a_R \, dt = \beta [I] \, dt\)</span>. We can now ask two questions: given the state of the network,</p>
+<ol class="simple">
+<li><p>when will the next event occur?, and</p></li>
+<li><p>what event will it be?</p></li>
+</ol>
+<p>Clearly these are probabilistic questions, so the answers will be formulated as probability distributions. Let’s define a probability distribution <span class="math notranslate nohighlight">\(P(\tau, e) \, d\tau\)</span> as the probability that an event will happen in the interval <span class="math notranslate nohighlight">\((t + \tau, t + \tau + d\tau)\)</span> <em>and</em> that that event will be of type <span class="math notranslate nohighlight">\(e\)</span>, which for SIR will be either an infection (<span class="math notranslate nohighlight">\(I\)</span>) or a recovery (<span class="math notranslate nohighlight">\(R\)</span>) event. So at time <span class="math notranslate nohighlight">\(t\)</span> we’re looking at the distribution of the times <span class="math notranslate nohighlight">\(\tau\)</span> between <span class="math notranslate nohighlight">\(t\)</span> and the next event, and the identity of that event. This is a joint probability density function on the space of <span class="math notranslate nohighlight">\(\tau\)</span> and <span class="math notranslate nohighlight">\(e\)</span>, where <span class="math notranslate nohighlight">\(\tau\)</span> is a continuous random variable and <span class="math notranslate nohighlight">\(e\)</span> is a discrete random variable. We an then draw values a pair of values  <span class="math notranslate nohighlight">\((\tau, e)\)</span> from this distribution to give us the time to the next event and its identity.</p>
+<p>Note also that the value of <span class="math notranslate nohighlight">\(\tau\)</span> answers the first question above, while the value of <span class="math notranslate nohighlight">\(e\)</span> answers the second.</p>
+<p>What do we expect from this distribution? Intuitively, a system where there are lots of places where events can occur should give rise to a high likelihood of drawing a small value of <span class="math notranslate nohighlight">\(\tau\)</span> from the distribution: the events happen close together in time. Conversely, as the number of places available decreases, it becomes more likely that we’ll draw a larger value of <span class="math notranslate nohighlight">\(\tau\)</span>.</p>
+</div>
+<div class="section" id="the-distribution-of-events-in-time">
+<h3>The distribution of events in time<a class="headerlink" href="#the-distribution-of-events-in-time" title="Permalink to this headline">¶</a></h3>
+<p>We now need a way to specify <span class="math notranslate nohighlight">\(P(\tau, e)\)</span> and to draw values from it.</p>
+<p>Let’s think about <span class="math notranslate nohighlight">\(P(\tau, e) \, d\tau\)</span> a little more. We’re looking for a value of <span class="math notranslate nohighlight">\(\tau\)</span> at which the next event happens, and the identity of that event. Equivalently, we could say that we want the probability that <em>no</em> event happens in the interval <span class="math notranslate nohighlight">\([t, t + \tau]\)</span>, <em>and</em> that an <span class="math notranslate nohighlight">\(e\)</span> event happens in the interval <span class="math notranslate nohighlight">\([t + \tau, t + \tau + d\tau]\)</span>. The use of the word “and” here suggests that we’ll be multiplying together the probabilities of the two components. We defined to probability of a particular event happening above, so we can then re-phrase <span class="math notranslate nohighlight">\(P(\tau, e) \, d\tau\)</span> a little differently</p>
+<div class="math notranslate nohighlight">
+\[
+    P(\tau, e) \, d\tau = P_0(\tau) \, a_e \, d\tau
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(P_0(\tau)\)</span> is the probability of no event happening in <span class="math notranslate nohighlight">\((t + \tau)\)</span> and <span class="math notranslate nohighlight">\(a_e\)</span> is the probability of <em>some</em> event <span class="math notranslate nohighlight">\(e\)</span> happening in an interval <span class="math notranslate nohighlight">\(d\tau\)</span>. Since we already know the values of <span class="math notranslate nohighlight">\(a_e\)</span> from the model parameters <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> and the size of the appropriate loci <span class="math notranslate nohighlight">\([SI]\)</span> and <span class="math notranslate nohighlight">\([I]\)</span>, we just need an expression for <span class="math notranslate nohighlight">\(P_0(\tau)\)</span>. Let <span class="math notranslate nohighlight">\(a \, d\tau' = \sum_e a_e \, d\tau'\)</span> be the probability that <em>some</em> event happens in an interval <span class="math notranslate nohighlight">\(d\tau'\)</span>, simply by summing-up the component probabilities of the different events. We then have</p>
+<div class="math notranslate nohighlight">
+\[
+    P_0(\tau' + d\tau') = P_0(\tau') \, (a \, d\tau')
+\]</div>
+<p>which is the probability that no event occurs in in the interval <span class="math notranslate nohighlight">\((t, t + \tau)\)</span> <em>and then</em> that one occured in the following interval <span class="math notranslate nohighlight">\(d\tau'\)</span>. This is a differential equation, the solution of which is</p>
+<div class="math notranslate nohighlight">
+\[
+    P_0(\tau) = e^{-a \tau}
+\]</div>
+<p>Substituting back into the above we therefore have</p>
+<div class="math notranslate nohighlight">
+\[
+    P(\tau, e) = P_0(\tau) \, a_e
+               = a_e \, e^{-a \tau}
+\]</div>
+<p>This is our joint probability distribution for the events defined by the various values of <span class="math notranslate nohighlight">\(a_e\)</span>. These values are <em>rates</em>, not probabilities: they are defined in terms of the number of places at which each event <span class="math notranslate nohighlight">\(e\)</span> can occur.</p>
+</div>
+<div class="section" id="drawing-from-the-distribution">
+<h3>Drawing from the distribution<a class="headerlink" href="#drawing-from-the-distribution" title="Permalink to this headline">¶</a></h3>
+<p>To conduct simulation, we need to be able to draw a pair <span class="math notranslate nohighlight">\((\tau, e)\)</span> from our distribution. However, we can’t simply choose <span class="math notranslate nohighlight">\(\tau\)</span> and <span class="math notranslate nohighlight">\(e\)</span> independently of each other, because the value of <span class="math notranslate nohighlight">\(P(\tau, e)\)</span> depends on <em>all</em> the possible events <span class="math notranslate nohighlight">\(e\)</span> because of the presence of <span class="math notranslate nohighlight">\(a\)</span>, the sum of all event rates, in its definition. That means that the time to the next event depends on the number of events that could occur.</p>
+<p>In other words, <span class="math notranslate nohighlight">\(P(\tau, e)\)</span> is a <strong>joint probability distribution</strong> from which we need to draw a pair. Any joint probability distribution <span class="math notranslate nohighlight">\(P(a, b)\)</span> can be re-written as <span class="math notranslate nohighlight">\(P(a, b) = P(a) \, P(b | a)\)</span>: the prior (independent) probability of <span class="math notranslate nohighlight">\(a\)</span> occuring multiplied by the probability of <span class="math notranslate nohighlight">\(b\)</span> occurring <em>given that</em> <span class="math notranslate nohighlight">\(a\)</span> has occurred. In our case</p>
+<div class="math notranslate nohighlight">
+\[
+    P(\tau, e) = P(\tau) \, P(e | \tau)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(P(\tau)\)</span> is the probability that <em>some</em> event will occur on the interval <span class="math notranslate nohighlight">\((t, t + \tau)\)</span> and <span class="math notranslate nohighlight">\(P(e | \tau)\)</span> is the probability that this event will be of type <span class="math notranslate nohighlight">\(e\)</span> <em>given that</em> it occurs on this interval. Clearly <span class="math notranslate nohighlight">\(P(\tau)\)</span> is simply the sum of the probabilities for all the events that may occur</p>
+<div class="math notranslate nohighlight">
+\[
+    P(\tau) = \sum_e P(\tau, e)
+\]</div>
+<p>and therefore</p>
+<div class="math notranslate nohighlight">
+\[
+    P(e | \tau) = \frac{P(\tau, e)}{\sum_{e'} P(\tau, e')}
+\]</div>
+<p>These two equations are both single-variable probability distributions (over <span class="math notranslate nohighlight">\(\tau\)</span> and <span class="math notranslate nohighlight">\(e\)</span> respectively) expressed in terms of the joint probability distribution <span class="math notranslate nohighlight">\(P(\tau, e)\)</span>, and if we substitute for <span class="math notranslate nohighlight">\(P(\tau, e)\)</span> from above we get</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+    P(\tau)     &amp;= \sum_e a_e e^{-a \tau} \\
+                &amp;= a e^{-a \tau} \\
+    P(e | \tau) &amp;= \frac{P(\tau, e)}{\sum_{e'} P(\tau, e')} \\
+                &amp;= \frac{a_e e^{-a \tau}}{a e^{-a \tau} } \\
+                &amp;= \frac{a_e}{a}
+\end{align*}
+\end{split}\]</div>
+<p>Note that <span class="math notranslate nohighlight">\(P(e | \tau)\)</span> is in this case independent of <span class="math notranslate nohighlight">\(\tau\)</span>, since the event probabilities are constants.</p>
+<p>Let’s briefly return to the network scenario we’re interested in. The value <span class="math notranslate nohighlight">\(\tau\)</span> is the interval of time until the next event occurs in the network, whether that is the infection of the S node attached to an SI edge of the recovery of an I node. Which of these events happens is determined by <span class="math notranslate nohighlight">\(e\)</span>. The pair <span class="math notranslate nohighlight">\((\tau, e)\)</span> therefore fully defines the time and identity of the next event in the simulation. It remains to see how we choose these two values, and how the network evolves in response to the selected event.</p>
+</div>
+<div class="section" id="span-id-sec-epidemic-gillespie-drawing-pair-span-generating-the-tau-e-pair">
+<h3><span id="sec_epidemic_gillespie_drawing_pair"></span> Generating the <span class="math notranslate nohighlight">\((\tau, e)\)</span> pair<a class="headerlink" href="#span-id-sec-epidemic-gillespie-drawing-pair-span-generating-the-tau-e-pair" title="Permalink to this headline">¶</a></h3>
+<p>In order to make use of <span class="math notranslate nohighlight">\(P(\tau, e)\)</span> we have to be able to draw <span class="math notranslate nohighlight">\(\tau\)</span> and <span class="math notranslate nohighlight">\(e\)</span> from the joint distribution. We saw above that we can dop this by drawing values from <span class="math notranslate nohighlight">\(P(\tau)\)</span> and <span class="math notranslate nohighlight">\(P(e | \tau)\)</span> individually, with the latter distribution actually being independent of time in our current case.</p>
+<p>It may not be obvious how to draw from such distributions, but we can manipulate the probabilities to make it possible using only a source of uniformly-distributed random numbers on the range <span class="math notranslate nohighlight">\((0, 1)\)</span>. The trick is to observe that, for any probability density function <span class="math notranslate nohighlight">\(P(a)\)</span>, the value <span class="math notranslate nohighlight">\(P(a) \, da\)</span> represents the probability that a value drawn from the distribution will lie between <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\((a + da)\)</span>. From this we can construct a cumulative distribution function,</p>
+<div class="math notranslate nohighlight">
+\[
+    F(x) = \int_{-\infty}^{x} P(a) \, da
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(F(x_0)\)</span> represents the probability that a value drawn from <span class="math notranslate nohighlight">\(P(a)\)</span> is less than or equal to <span class="math notranslate nohighlight">\(x_0\)</span>, also denoted <span class="math notranslate nohighlight">\(P(a \le x_0)\)</span>. If we now draw a value <span class="math notranslate nohighlight">\(r\)</span> from a uniform distribution on <span class="math notranslate nohighlight">\((0, 1)\)</span> we can compute <span class="math notranslate nohighlight">\(x = F^{-1}(r)\)</span> where <span class="math notranslate nohighlight">\(F^{-1}\)</span> is the inverse of the cumulative distribution function and <span class="math notranslate nohighlight">\(x\)</span> will be distributed according to <span class="math notranslate nohighlight">\(P(a)\)</span>.  This means we can convert a uniformly-distributed value into a value drawn from any probability distribution for which we can construct (and invert) a cumulative distribution function.</p>
+<p>In our case we have that <span class="math notranslate nohighlight">\(P(\tau) = a \, e^{-a \tau}\)</span>. Remember that <span class="math notranslate nohighlight">\(a\)</span> is a constant, and that intervals can’t be negative. This means that</p>
+<p>\begin{align*}
+F(\tau) &amp;= \int_{-\infty}^{\tau} a , e^{-a \tau’} , d\tau’ \
+&amp;= \int_0^{\tau} a , e^{-a \tau’} , d\tau’ \
+&amp;= -e^{-a \tau’} , \bigg|_0^\tau \
+&amp;= -e^{-a \tau} -(-e^0) \
+&amp;= 1 - e^{-a \tau}
+\end{align*}</p>
+<p>This is an awkward expression to manipulate, but we can observe that, if a number <span class="math notranslate nohighlight">\(r_1\)</span> is uniformly distributed, then so by definition is <span class="math notranslate nohighlight">\(1 - r_1\)</span>, so if we set <span class="math notranslate nohighlight">\(F(\tau) = 1 - r_1\)</span> we can cancel-out the constant ones and get a simpler expression overall. We then have</p>
+<p>\begin{align*}
+1 - r_1 &amp;= F(\tau) \
+&amp;= 1 - e^{-a \tau} \
+r_1 &amp;= e^{-a \tau} \
+&amp;= \frac{1}{e^{a \tau}} \
+e^{a \tau} &amp;= \frac{1}{r_1} \
+a \tau &amp;= \ln \frac{1}{r_1} \
+\tau &amp;= \frac{1}{a} , \ln \frac{1}{r_1}
+\end{align*}</p>
+<p>The discrete case works similarly. If we draw a value <span class="math notranslate nohighlight">\(r_2\)</span> on <span class="math notranslate nohighlight">\((0, 1)\)</span>, then the value of <span class="math notranslate nohighlight">\(e\)</span> we require is given by <span class="math notranslate nohighlight">\(\sum_{e' = 0}^{e - 1} a_{e'} \leq r_2 a \leq \sum_{e' = 0}^{e} a_{e'}\)</span>: the largest <span class="math notranslate nohighlight">\(e\)</span> such that the sum of <span class="math notranslate nohighlight">\(a_{e'}\)</span> for <span class="math notranslate nohighlight">\(e' \le e\)</span> is less than <span class="math notranslate nohighlight">\(r_2 a\)</span>.</p>
+<p>The upshot of all this probability theory is that we can choose a time to the next event <span class="math notranslate nohighlight">\(\tau\)</span> and the identity of the next event <span class="math notranslate nohighlight">\(e\)</span> from the distribution induced by the individual event probabilities and the size of the loci for the various events in the network, by drawing two uniformly-distributed numbers and performing two simple calculations <span id="id3">[<a class="reference internal" href="zbibliography.html#id7">5</a>]</span>.</p>
+</div>
+</div>
+<div class="section" id="stochastic-dynamics">
+<h2>Stochastic dynamics<a class="headerlink" href="#stochastic-dynamics" title="Permalink to this headline">¶</a></h2>
+<p>All we now have to do is to take the simple calculations above and implement them as a sub-class of <code class="docutils literal notranslate"><span class="pre">epydemic.Dynamics</span></code>, exactly as we previously did for discrete-time synchronous dynamics.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">epyc</span> <span class="kn">import</span> <span class="n">Experiment</span>
+<span class="kn">from</span> <span class="nn">epydemic</span> <span class="kn">import</span> <span class="n">Dynamics</span><span class="p">,</span> <span class="n">SIR</span><span class="p">,</span> <span class="n">ERNetwork</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;png&#39;
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.dpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">300</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn&#39;</span><span class="p">)</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s1">&#39;notebook&#39;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We’ll start with the stochastic dynamics class itself:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">StochasticDynamics</span><span class="p">(</span><span class="n">Dynamics</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;A dynamics that runs stochastically in continuous time. This is a</span>
+<span class="sd">    very efficient and statistically exact approach, but requires that the</span>
+<span class="sd">    statistical properties of the events making up the process are known.</span>
+<span class="sd">    </span>
+<span class="sd">    :param p: the process to run</span>
+<span class="sd">    :param g: network or network generator (optional, can be provided later)&#39;&#39;&#39;</span>
+
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">g</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">g</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">do</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Run the process using Gillespie dynamics.</span>
+
+<span class="sd">        :param params: the experimental parameters</span>
+<span class="sd">        :returns: the experimental results dict&#39;&#39;&#39;</span>
+        <span class="n">proc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="p">()</span>
+        <span class="n">rng</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">()</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">events</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="ow">not</span> <span class="n">proc</span><span class="o">.</span><span class="n">atEquilibrium</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+            <span class="c1"># pull the transition dynamics at this timestep</span>
+            <span class="n">transitions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">eventRateDistribution</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+            <span class="c1"># compute the total rate of transitions for the entire network</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="ow">in</span> <span class="n">transitions</span><span class="p">:</span>
+                <span class="n">a</span> <span class="o">+=</span> <span class="n">r</span>
+            <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+                <span class="k">break</span>              <span class="c1"># no events with non-zero rates</span>
+
+            <span class="c1"># calculate the timestep delta</span>
+            <span class="n">r1</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+            <span class="n">dt</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">r1</span><span class="p">)</span>
+
+            <span class="c1"># calculate which event happens</span>
+            <span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">ef</span><span class="p">)</span> <span class="o">=</span> <span class="n">transitions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">transitions</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="c1"># choose the rate threshold</span>
+                <span class="n">r2</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+                <span class="n">xc</span> <span class="o">=</span> <span class="n">r2</span> <span class="o">*</span> <span class="n">a</span>
+
+                <span class="c1"># find the largest event for which the cumulative rates</span>
+                <span class="c1"># are less than the random threshold</span>
+                <span class="n">xs</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">transitions</span><span class="p">)):</span>
+                    <span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">xsp</span><span class="p">,</span> <span class="n">ef</span><span class="p">)</span> <span class="o">=</span> <span class="n">transitions</span><span class="p">[</span><span class="n">v</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">xs</span> <span class="o">+</span> <span class="n">xsp</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">xc</span><span class="p">:</span>
+                        <span class="k">break</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">xs</span> <span class="o">+=</span> <span class="n">xsp</span>
+
+            <span class="c1"># increment the time</span>
+            <span class="n">t</span> <span class="o">+=</span> <span class="n">dt</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">setCurrentSimulationTime</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+            <span class="c1"># fire any events posted for at or before this time</span>
+            <span class="n">events</span> <span class="o">=</span> <span class="n">events</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">runPendingEvents</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+            <span class="c1"># it&#39;s possible that posted events have removed all elements</span>
+            <span class="c1"># from the chosen locus, in which case we simply continue</span>
+            <span class="c1"># with the next event selection</span>
+            <span class="c1"># sd: is this correct? or does it mess up the statistics too much?</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="c1"># draw a random element from the chosen locus</span>
+                <span class="n">e</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+
+                <span class="c1"># perform the event by calling the event function,</span>
+                <span class="c1"># passing the dynamics, event time, network, and element</span>
+                <span class="n">ef</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+
+                <span class="c1"># increment the event counter</span>
+                <span class="n">events</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="c1"># when we get here there may still be posted events that haven&#39;t</span>
+        <span class="c1"># been run, and these are ignored: equilibrium overrides posting</span>
+
+        <span class="c1"># add some more metadata</span>
+        <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">())[</span><span class="bp">self</span><span class="o">.</span><span class="n">TIME</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span>
+        <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">())[</span><span class="bp">self</span><span class="o">.</span><span class="n">EVENTS</span><span class="p">]</span> <span class="o">=</span> <span class="n">events</span>
+
+        <span class="c1"># report results</span>
+        <span class="n">rc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">experimentalResults</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">rc</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We need an event rate distribution rather than an event probability distribution so we provide that as a method <code class="docutils literal notranslate"><span class="pre">eventRateDistribution()</span></code> that takes the probability distribution returned by <code class="docutils literal notranslate"><span class="pre">eventDistribution()</span></code> and, for each event, multiplies the probability of that event happening by the number of places the event can happen.</p>
+<p>The important part of the class is the <code class="docutils literal notranslate"><span class="pre">do()</span></code> method, which implements the mechanism for drawing the <span class="math notranslate nohighlight">\((\tau, e)\)</span> pair as described <a class="reference external" href="#sec_epidemic_gillespie_drawing_pair">above</a>. In the code, <code class="docutils literal notranslate"><span class="pre">dt</span></code> is the interval to the next event (<span class="math notranslate nohighlight">\(\tau\)</span>), while <code class="docutils literal notranslate"><span class="pre">xc</span></code> is used to choose the event that occurs.</p>
+</div>
+<div class="section" id="span-id-sec-epidemic-stochastic-example-span-simulating-sir-again">
+<h2><span id="sec_epidemic_stochastic_example"></span> Simulating SIR (again)<a class="headerlink" href="#span-id-sec-epidemic-stochastic-example-span-simulating-sir-again" title="Permalink to this headline">¶</a></h2>
+<p>We can now take the same parameters as we used in the <a class="reference external" href="epidemic-synchronous.ipynb#sec_epidemic_synchronous_example">synchronous case</a>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+<span class="c1"># ER network parameters</span>
+<span class="n">params</span><span class="p">[</span><span class="n">ERNetwork</span><span class="o">.</span><span class="n">N</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5000</span>
+<span class="n">params</span><span class="p">[</span><span class="n">ERNetwork</span><span class="o">.</span><span class="n">KMEAN</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="c1"># SIR parameters</span>
+<span class="n">params</span><span class="p">[</span><span class="n">SIR</span><span class="o">.</span><span class="n">P_INFECTED</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">params</span><span class="p">[</span><span class="n">SIR</span><span class="o">.</span><span class="n">P_INFECT</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">params</span><span class="p">[</span><span class="n">SIR</span><span class="o">.</span><span class="n">P_REMOVE</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plugging these parameters into our new simulation class, we get:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">SIR</span><span class="p">()</span>
+<span class="n">sim</span> <span class="o">=</span> <span class="n">StochasticDynamics</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">ERNetwork</span><span class="p">())</span>
+
+<span class="n">sto</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">params</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sto</span><span class="p">[</span><span class="n">Experiment</span><span class="o">.</span><span class="n">RESULTS</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;epydemic.SIR.S&#39;: 5, &#39;epydemic.SIR.I&#39;: 0, &#39;epydemic.SIR.R&#39;: 4995}
+</pre></div>
+</div>
+</div>
+</div>
+<p>What do we get? We can look at several of the same factors that we looked at for the synchronous case. Firstly, the size of epidemic should be the same, given that the simulation parameters were identical, with the proviso that both simulations have a large amount of randomness in them that will preclude identical results:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Rs</span> <span class="o">=</span> <span class="n">sto</span><span class="p">[</span><span class="n">Experiment</span><span class="o">.</span><span class="n">RESULTS</span><span class="p">][</span><span class="n">SIR</span><span class="o">.</span><span class="n">REMOVED</span><span class="p">]</span>
+<span class="n">N</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="n">ERNetwork</span><span class="o">.</span><span class="n">N</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Epidemic covered </span><span class="si">{percent:.2f}% o</span><span class="s1">f the network&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">percent</span> <span class="o">=</span> <span class="p">(</span><span class="n">Rs</span> <span class="o">/</span> <span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epidemic covered 99.90% of the network
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can at least say that both simulations have produced an epidemic (or some size) for these parameter values. That’s important in terms of some weak notion of correctness, but of course these two approaches are <em>supposed</em> to behave the same, for a suitably stochastic definition of “the same”.</p>
+</div>
+<div class="section" id="comparison">
+<h2>Comparison<a class="headerlink" href="#comparison" title="Permalink to this headline">¶</a></h2>
+<p>We can of course dig-into the results in more detail. There are a lot of potentially interesting things to explore, and we’ll just pick two of the most important: is one method faster than the other?, and, do they look like they generate a similar train of events?</p>
+<p>First we load both datasets:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;sync.pickle&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">handle</span><span class="p">:</span>
+    <span class="n">syn</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;sto.pickle&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">handle</span><span class="p">:</span>
+    <span class="n">sto</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="performance">
+<h3>Performance<a class="headerlink" href="#performance" title="Permalink to this headline">¶</a></h3>
+<p>Probably the most important measure of performace is “wallclock time”, the time that elapsed while the simulationn ran:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="s2">&quot;Elapsed simulation times:&quot;</span>
+<span class="nb">print</span> <span class="s2">&quot;Synchronous </span><span class="si">{elapsed:.2f}</span><span class="s2">s&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">elapsed</span> <span class="o">=</span> <span class="n">syn</span><span class="p">[</span><span class="n">epyc</span><span class="o">.</span><span class="n">Experiment</span><span class="o">.</span><span class="n">METADATA</span><span class="p">][</span><span class="s1">&#39;elapsed_time&#39;</span><span class="p">])</span>
+<span class="nb">print</span> <span class="s2">&quot;Stochastic  </span><span class="si">{elapsed:.2f}</span><span class="s2">s&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">elapsed</span> <span class="o">=</span> <span class="n">sto</span><span class="p">[</span><span class="n">epyc</span><span class="o">.</span><span class="n">Experiment</span><span class="o">.</span><span class="n">METADATA</span><span class="p">][</span><span class="s1">&#39;elapsed_time&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Elapsed simulation times:
+Synchronous 0.46s
+Stochastic  1.13s
+</pre></div>
+</div>
+</div>
+</div>
+<p>Where is the time difference coming from? Thge synchronous simulation simulated a lot of timesteps where nothing happened: there were no events, just from the random nature of the process and the rates of events. The stochastic simulation jumped over these empty periods and only did work when there was work to do. That’s clearly a benefit, and one can imagine that, for larger simulations and those whose events are less frequent, it might become a really significant computational saving.</p>
+</div>
+<div class="section" id="equivalence">
+<h3>Equivalence<a class="headerlink" href="#equivalence" title="Permalink to this headline">¶</a></h3>
+<p>But a performance benefit is only useful if the results are correct: there’s no point in doing the wrong things faster, after all. So we need to convince ourselves that, at the very least, the two simulations conducted for the same parameters produce plausibly comparable results – even while we accept that statistical variations might occur.</p>
+<p>We can start by looking at the populations of the different compartments at equilibrium:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="s2">&quot;Node type sub-populations:&quot;</span>
+<span class="nb">print</span> <span class="s2">&quot;Synchronous:&quot;</span><span class="p">,</span> <span class="n">syn</span><span class="p">[</span><span class="n">epyc</span><span class="o">.</span><span class="n">Experiment</span><span class="o">.</span><span class="n">RESULTS</span><span class="p">][</span><span class="s1">&#39;compartments&#39;</span><span class="p">]</span>
+<span class="nb">print</span> <span class="s2">&quot;Stochastic:&quot;</span><span class="p">,</span> <span class="n">sto</span><span class="p">[</span><span class="n">epyc</span><span class="o">.</span><span class="n">Experiment</span><span class="o">.</span><span class="n">RESULTS</span><span class="p">][</span><span class="s1">&#39;compartments&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Node type sub-populations:
+Synchronous: {&#39;I&#39;: 0, &#39;S&#39;: 227, &#39;R&#39;: 4773}
+Stochastic: {&#39;I&#39;: 0, &#39;S&#39;: 227, &#39;R&#39;: 4773}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Although we are using two different simulation techniques, we claim that they are “the same” in the sense of simulating the same process dynamics. One way to test this is to look at the distance between successive events. If the events are happening with similar distributions, we would expect the inter-event time distributins to be similar too.</p>
+<p>To do this we need to capture when (in simulation time) each event occurs. We can do this quite simply, either by extending the simulation dynamics classes, or – more straightforwardly – by defining a new compartment5ed model whose results include the simulation times for events:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SIR_EventDistribution</span><span class="p">(</span><span class="n">epydemic</span><span class="o">.</span><span class="n">SIR</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;An SIR model that also captures the times of all events.&#39;&#39;&#39;</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SIR_EventDistribution</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        
+        <span class="c1"># create a place to store the sequence of event times</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_eventDistribution</span> <span class="o">=</span> <span class="p">[]</span>
+        
+    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SIR_EventDistribution</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_eventDistribution</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">results</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">g</span> <span class="p">):</span>
+        <span class="n">rc</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">SIR_EventDistribution</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">results</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+        
+        <span class="c1"># add the event times to the results</span>
+        <span class="n">rc</span><span class="p">[</span><span class="s1">&#39;event_times&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_eventDistribution</span>
+        
+        <span class="k">return</span> <span class="n">rc</span>
+
+    <span class="k">def</span> <span class="nf">infect</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">dyn</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span> <span class="p">):</span>
+        <span class="c1"># perform the base event</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SIR_EventDistribution</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">infect</span><span class="p">(</span><span class="n">dyn</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">))</span>
+        
+        <span class="c1"># record the event time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_eventDistribution</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">dyn</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">n</span> <span class="p">):</span>
+        <span class="c1"># perform the base event</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SIR_EventDistribution</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">dyn</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+        
+        <span class="c1"># record the event time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_eventDistribution</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+        
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now run the same process with different dynamics, and capture the event trains that are generated. For clarity we’ll run a slightly larger epidemic so we get more events to compare:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># epidemic parameters</span>
+<span class="n">params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="n">params</span><span class="p">[</span><span class="n">epydemic</span><span class="o">.</span><span class="n">SIR</span><span class="o">.</span><span class="n">P_INFECTED</span><span class="p">]</span> <span class="o">=</span> <span class="n">pInfected</span>
+<span class="n">params</span><span class="p">[</span><span class="n">epydemic</span><span class="o">.</span><span class="n">SIR</span><span class="o">.</span><span class="n">P_INFECT</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">params</span><span class="p">[</span><span class="n">epydemic</span><span class="o">.</span><span class="n">SIR</span><span class="o">.</span><span class="n">P_REMOVE</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">SIR_EventDistribution</span><span class="p">()</span>
+
+<span class="c1"># run process over a larger ER network</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">networkx</span><span class="o">.</span><span class="n">erdos_renyi_graph</span><span class="p">(</span><span class="mi">30000</span><span class="p">,</span> <span class="mf">5.0</span> <span class="o">/</span> <span class="mi">30000</span><span class="p">)</span>
+
+<span class="c1"># synchronous dynamics</span>
+<span class="n">sim</span> <span class="o">=</span> <span class="n">epydemic</span><span class="o">.</span><span class="n">CompartmentedSynchronousDynamics</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">g</span><span class="p">)</span>
+<span class="n">syn_res</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">params</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="n">syn_events</span> <span class="o">=</span> <span class="n">syn_res</span><span class="p">[</span><span class="n">epyc</span><span class="o">.</span><span class="n">Experiment</span><span class="o">.</span><span class="n">RESULTS</span><span class="p">][</span><span class="s1">&#39;event_times&#39;</span><span class="p">]</span>
+
+<span class="c1"># stochastic dynamics</span>
+<span class="n">sim</span> <span class="o">=</span> <span class="n">CompartmentedStochasticDynamics</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">g</span><span class="p">)</span>
+<span class="n">sto_res</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">params</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="n">sto_events</span> <span class="o">=</span> <span class="n">sto_res</span><span class="p">[</span><span class="n">epyc</span><span class="o">.</span><span class="n">Experiment</span><span class="o">.</span><span class="n">RESULTS</span><span class="p">][</span><span class="s1">&#39;event_times&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now compute the inter-event times. Since we’re working with continuous and discrete time depending on the dynamics, histogramming the intervals should generate similar curves:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribution of inter-event times&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Inter-event time&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$log(\mathrm</span><span class="si">{events}</span><span class="s1">)$&#39;</span><span class="p">)</span>
+
+<span class="c1"># work out inter-event times</span>
+<span class="n">l</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">syn_inter</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">syn_events</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">syn_inter</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">syn_events</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">l</span><span class="p">)</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="n">syn_events</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="n">sto_inter</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">l</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sto_events</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">sto_inter</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sto_events</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">l</span><span class="p">)</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="n">sto_events</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+<span class="c1"># plot the histogram of the distribution</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">([</span><span class="n">sto_inter</span><span class="p">,</span> <span class="n">syn_inter</span><span class="p">],</span>
+         <span class="n">bins</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+         <span class="n">log</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+         <span class="n">label</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;stochastic&#39;</span><span class="p">,</span> <span class="s1">&#39;synchronous&#39;</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/gillespie_42_0.svg" src="_images/gillespie_42_0.svg" /></div>
+</div>
+<p>So those are <em>similar</em>, both dropping off exponentially as we’d expect. They don’t follow exactly the same distribution, but that could just be the result of the stochastic nature of the process: we ran the two dynamics over the same network, but from different initial (random) seedings of nodes. Or it could be because the synchronous approach is less exact because of interactions between events. If we wanted a closer look, we’d have to perform some repetitions to see whether we got different results repeatedly or whether things evened out – but that’s something for another time.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="synchronous.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span id="chap_epidemic_synchronous"></span> Synchronous simulation</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="zbibliography.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">References</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Simon Dobson<br/>
+    
+        &copy; <a href="copyright.html">Copyright</a> 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

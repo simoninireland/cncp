@@ -23,15 +23,16 @@ one acquire such familiarity in the first place?
 
 As a computer scientist I'm also interested in the methods and
 calculations that go into demonstrating and validating the results
-presented. Actually, I'm *fascinated* by how one conducts numerical
-simulations, and how we make software that's easy for practitioners to
-use. These are not common concerns within the network science
-community, where there is a distinct lack of common, reusable tooling
-and very few signs of modern software engineering practices like
-continuous integration, unit testing, automation, and the like -- all
-of which are considered essential good practice by computer
-scientists. Tooling of this kind itself has a learning curve, and just
-as many lack the necessary maths background (but understand
+presented. Actually, I'm *fascinated* by how we conduct numerical
+simulations, how we make software that's easy for practitioners to
+use, and how we verify, extend, and maintain this software to allow
+for incremental improvement. These are not common concerns within the
+network science community, where there is a distinct lack of common,
+reusable tooling and very few signs of modern software engineering
+practices like continuous integration, unit testing, automation, and
+the like -- all of which are considered essential good practice by
+computer scientists. Tooling of this kind itself has a learning curve,
+and just as many lack the necessary maths background (but understand
 computing), others will not be able to develop or evolve a complex
 codebase (but will have the maths to describe how it should
 work). This book is intended for both these kinds of scientists.
@@ -46,5 +47,6 @@ learning curves more quickly and be able to make their own
 contributions to network science and its applications.
 
 This book is a work-in-progress, growing slowly as I add explanations
-to the work I'm doing. It may grow non-linearly -- very appropriately
--- as I flesh-out the background to material already present.
+to the work I'm doing. It will -- very appropriately -- grow
+non-linearly as I flesh-out the background to material already
+present.

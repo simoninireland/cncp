@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>References &#8212; Complex networks, complex processes: A network science miscellany</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -31,19 +31,19 @@
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -54,9 +54,12 @@
     <link rel="search" title="Search" href="search.html" />
     <link rel="copyright" title="Copyright" href="copyright.html" />
     <link rel="next" title="About the author" href="about.html" />
-    <link rel="prev" title="High-degree numerical differentiation of generating functions" href="cauchy.html" />
+    <link rel="prev" title="Gillespie simulation" href="gillespie.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -74,13 +77,14 @@
     <a class="navbar-brand text-wrap" href="index.html">
       
       
+      
       <h1 class="site-logo" id="site-title">Complex networks, complex processes: A network science miscellany</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -93,6 +97,28 @@
  <li class="toctree-l1">
   <a class="reference internal" href="cauchy.html">
    High-degree numerical differentiation of generating functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="generating-cdfs.html">
+   Generating cumulative generating functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="simulation.html">
+   Epidemic simulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="synchronous.html">
+   <span id="chap_epidemic_synchronous">
+   </span>
+   Synchronous simulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gillespie.html">
+   Gillespie simulation
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -156,7 +182,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -174,17 +200,27 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>References</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
-  <div class="section" id="references">
+  <div class="tex2jax_ignore mathjax_ignore section" id="references">
 <h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
 <p id="id1"><dl class="citation">
 <dt class="label" id="id4"><span class="brackets">1</span></dt>
@@ -193,19 +229,28 @@
 <dt class="label" id="id5"><span class="brackets">2</span></dt>
 <dd><p>Albert-László Barabási. <em>Bursts: the hidden patterns behind everything you do, from your e-mail to the Bloody Crusades</em>. Plume, 2011. ISBN 978-0-452-29718-0.</p>
 </dd>
-<dt class="label" id="id7"><span class="brackets">3</span></dt>
+<dt class="label" id="id9"><span class="brackets">3</span></dt>
+<dd><p>Ying Cao, Daniel Gillespie, and Linda Petzold. Efficient step size selection for the tau-leaping simulation method. <em>Journal of Chemical Physics</em>, 2006. URL: <a class="reference external" href="doi://10.1063/1.2159468">doi://10.1063/1.2159468</a>.</p>
+</dd>
+<dt class="label" id="id10"><span class="brackets">4</span></dt>
 <dd><p>Simon Dobson. <em>Epidemic modelling: Some notes, maths, and code</em>. Independent Publishing Network, 2020. ISBN 978-183853-565-0. URL: <a class="reference external" href="https://simoninireland.github.io/introduction-to-epidemics/">https://simoninireland.github.io/introduction-to-epidemics/</a>.</p>
 </dd>
-<dt class="label" id="id8"><span class="brackets">4</span></dt>
+<dt class="label" id="id7"><span class="brackets">5</span></dt>
+<dd><p>Daniel Gillespie. A general method for numerically simulating the stochastic time evolution of coupled chemical reactions. <em>Journal of Computational Physics</em>, 22:403––434, 1976.</p>
+</dd>
+<dt class="label" id="id8"><span class="brackets">6</span></dt>
+<dd><p>Daniel Gillespie. Exact stochastic simulation of coupled chemical reactions. <em>Journal of Physical Chemistry</em>, 81(25):2340––2361, 1977.</p>
+</dd>
+<dt class="label" id="id11"><span class="brackets">7</span></dt>
 <dd><p>M.E.J. Newman. Spread of epidemic disease on networks. <em>Physical Review E</em>, July 2002. URL: <a class="reference external" href="doi://10.1103/PhysRevE.66.016128">doi://10.1103/PhysRevE.66.016128</a>.</p>
 </dd>
-<dt class="label" id="id2"><span class="brackets">5</span></dt>
+<dt class="label" id="id2"><span class="brackets">8</span></dt>
 <dd><p>M.E.J. Newman. <em>Networks: an introduction</em>. Oxford University Press, 2010. ISBN 978-0-19-920665-0.</p>
 </dd>
-<dt class="label" id="id6"><span class="brackets">6</span></dt>
+<dt class="label" id="id6"><span class="brackets">9</span></dt>
 <dd><p>M.E.J. Newman, Steven Strogatz, and Duncan Watts. Random graphs with arbitrary degree distributions and their applications. <em>Physical Review E</em>, 2001. URL: <a class="reference external" href="https://doi.org/10.1103/PhysRevE.64.026118">https://doi.org/10.1103/PhysRevE.64.026118</a>.</p>
 </dd>
-<dt class="label" id="id3"><span class="brackets">7</span></dt>
+<dt class="label" id="id3"><span class="brackets">10</span></dt>
 <dd><p>Mark Newman, Albert László Barabási, and Duncan Watts. <em>The structure and dynamics of networks</em>. Princeton University Press, 2006.</p>
 </dd>
 </dl>
@@ -234,34 +279,42 @@
 
               </div>
               
-        
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="cauchy.html" title="previous page">High-degree numerical differentiation of generating functions</a>
-    <a class='right-next' id="next-link" href="about.html" title="next page">About the author</a>
-
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="gillespie.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Gillespie simulation</p>
         </div>
-        
+    </a>
+    <a class='right-next' id="next-link" href="about.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">About the author</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Simon Dobson<br/>
-        
-            &copy; <a href="copyright.html">Copyright</a> 2021.<br/>
-      </p>
-    </div>
-  </footer>
+    <footer class="footer">
+  <p>
+    
+      By Simon Dobson<br/>
+    
+        &copy; <a href="copyright.html">Copyright</a> 2021.<br/>
+  </p>
+</footer>
 </main>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>
