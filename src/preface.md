@@ -47,5 +47,6 @@ learning curves more quickly and be able to make their own
 contributions to network science and its applications.
 
 This book is a work-in-progress, growing slowly as I add explanations
-to the work I'm doing. It may grow non-linearly -- very appropriately
--- as I flesh-out the background to material already present.
+to the work I'm doing. It will -- very appropriately -- grow
+non-linearly as I flesh-out the background to material already
+present.
