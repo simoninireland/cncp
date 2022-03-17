@@ -135,3 +135,6 @@ bookdir/
 # Emacs backups
 *~
 \#*\#
+
+# manim generated media
+src/video/*/media/
