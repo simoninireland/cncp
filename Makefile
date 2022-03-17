@@ -1,6 +1,6 @@
 # Makefile for "Complex networks, complex processes: A network science miscellany"
 #
-# Copyright (C) 2021 Simon Dobson <simon.dobson@st-andrews.ac.uk>
+# Copyright (C) 2021--2022 Simon Dobson <simon.dobson@st-andrews.ac.uk>
 #
 # Licensed under the Creative Commons Attribution-Share Alike 4.0
 # International License (https://creativecommons.org/licenses/by-sa/4.0/).

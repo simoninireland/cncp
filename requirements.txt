@@ -9,3 +9,4 @@ mpmath
 matplotlib
 seaborn
 pandas
+manim
